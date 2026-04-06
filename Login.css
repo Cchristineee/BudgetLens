@@ -19,6 +19,15 @@
             text-decoration: none;
             color: black;
         }
+        /* Sign up buttn */
+        .signup-btn {
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: white;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+  
         /* Lens logo color blue */
         .logo span {
             color: #5d91a8;
@@ -51,5 +60,16 @@
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             text-align: center;
+        }
+
+        .card h2 {
+            margin-bottom: 5px;
+            font-size: 28px;
+        }
+
+        .card p {
+            color: grey;
+            font-size: 28px;
+            margin-bottom: 25px;
         }
     
