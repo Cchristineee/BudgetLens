@@ -1,0 +1,49 @@
+
+          body {
+            margin: 0;
+            font-family: Georgia, serif;
+            background-color: F2F2F2;
+        }
+        /* Nav Bar */
+         .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #eaeaea;
+            border-bottom: 1px solid #ccc;
+         }
+       
+        .logo {
+            font-size: 32px;
+            text-decoration: none;
+            color: black;
+
+        }
+
+        .logo span {
+            color: #5d91a8;
+        }
+        .signup-btn{
+            padding: 10px 20px;
+            border-radius: 10px;
+            background: white;
+            border: 1px solid #ccc;
+            cursor: pointer;
+
+        /* log in container */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 85vh;
+        }
+        /* log in card */
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    }
