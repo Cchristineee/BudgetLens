@@ -32,16 +32,10 @@
             cursor: pointer;
             border: none;
         }
-        /*sign up and login buttons 
         .signup{
             background: white;
             border: 1px solid #ccc;
         }
-        .login{
-            background: #5d91a8;
-            border: 1px solid #ccc;
-        }
-        */ 
         
         /* log in container */
         .container {
@@ -58,4 +52,4 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
-       
+    
