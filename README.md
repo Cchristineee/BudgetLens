@@ -1,6 +1,9 @@
 # BudgetLens
 BudgetLens is a web-based financial management application designed to help individuals and families track spending, manage shopping lists, and gain better visibility into their financial habits; all in one place.
 
+<p align="center">
+  <img width="236" height="228" alt="Budget Logo" src="https://github.com/user-attachments/assets/bcc43b68-a30d-477a-ba22-867d83e36891" />
+</p>
 
 # Overview
 
