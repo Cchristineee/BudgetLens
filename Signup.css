@@ -39,17 +39,21 @@
             font-weight: bold;
         }
 
-        /* Sign up buttn */
+        /* Log in button */
         .nav-btn {
             text-decoration: none;
-            background: white;
-            color: #555;
-            border: 1px solid #d0d0d0;
+            background: #5f8fa6;
+            color: white;
+            border: none;
             border-radius: 14px;
             padding: 14px 28px;
             font-size: 18px;
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
             display: inline-block;
+        }
+
+        .nav-btn:hover {
+            opacity: 0.9;
         }
 
         /* Page Centering */
@@ -109,6 +113,21 @@
             line-height: 1.2;
         }
 
+        /* Create Account Button */
+        .createaccount-btn {
+            width: 190px;
+            height: 42px;
+            border: none;
+            border-radius: 10px;
+            background-color: #5f8fa6;
+            color: white;
+            font-size: 18px;
+            font-family: Georgia, Serif;
+            cursor: pointer;
+            margin: 8px auto 18px;
+            display: block;
+        }
+
         /* Form */
         .form-group {
             text-align: left;
@@ -134,20 +153,6 @@
             background-color: #fafafa;
         }
 
-         /* Create Account Button */
-        .createaccount-btn {
-            width: 190px;
-            height: 42px;
-            border: none;
-            border-radius: 10px;
-            background-color: #5f8fa6;
-            color: white;
-            font-size: 18px;
-            font-family: Georgia, Serif;
-            cursor: pointer;
-            margin: 8px auto 18px;
-            display: block;
-        }
 
         .footer-text {
             font-size: 18px;
