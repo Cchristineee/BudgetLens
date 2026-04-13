@@ -1,6 +1,11 @@
 * {
     box-sizing: border-box;
 }
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
 
 body {
     margin: 0;
@@ -13,23 +18,25 @@ body {
     display: flex;
     min-height: 100vh;
 }
-
+/* Sidebar styles */
 .sidebar {
-    width: 250px;
+    width: 255px;
     background-color: #f1f1f1;
-    padding: 24px 16px;
+    padding: 24px 10px;
     border-right: 1px solid #ddd;
 }
 
 .sidebar-header {
-    margin-bottom: 30px;
+    margin-bottom: 28px;
+    padding: 0 10px;
 }
 
 .logo {
-    margin: 0%;
+    margin: 0;
     font-family: Georgia, serif;
-    font-size: 32px;
+    font-size: 36px;
     font-weight: bold;
+    line-height: 1.1;
 }
 
 .logo-span {
@@ -37,26 +44,27 @@ body {
 }
 
 .username {
-    margin-top: 4px;
-    color: #777;
-    font-size: 16px;
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #7a7a7a
 }
 
 /* Sidebar navigation styles */
-
 .sidebar-nav {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .nav-item {
+    display: flex;
+    align-items: center;
     text-decoration: none;
+    gap: 12px;
     color: #222;
-    padding: 12px 14px;
+    padding: 10px 12px;
     border-radius: 10px;
     font-size: 16px;
-    transition: background-color 0.2s ease;
 }
 
 .nav-item:hover {
@@ -64,24 +72,34 @@ body {
 }
 
 .nav-item.active {
-    background-color: #ececec;
+    background-color: #e9e9e9;
+}
+
+.nav-icon {
+    width: 14px;
+    text-align: center;
+    font-size: 17px;
 }
 
 /* The meat and potatoes of the layout */
 .main-content {
     flex: 1;
-    padding: 28px 36px;
+    padding: 24px 34px 28px;
 } 
+.dashboard-header {
+    margin-bottom: 22px;
+}
 
 .dashboard-header h2{
     margin: 0; 
     font-family: Georgia, serif;
     font-size: 24px;
+    font-weight: 700;
 }
 
 .dashboard-header p {
-    margin-top: 6px;
-    color: #777;
+    margin-top: 6px 0 0;
+    color: #7b7b7b;
     font-size: 16px;
 }
 
@@ -89,48 +107,65 @@ body {
 
 .top-cards {
     display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 20px;
+    grid-template-columns: 330px 1fr;
+    gap: 16px;
     margin-top: 28px;
 }
 
+/* Card styles */
 .card {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    padding: 24px;
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 24px 28px;
 }
 
-card h3 {
-    margin-top: 0%;
-    margin-bottom: 24px;
-    font-size: 18px;
+.card h3 {
+    margin: 0 0 28px;
+    font-weight: 700;
+    font-size: 20px;
 }
 
 /* Status card */
-.status-row {
+.status-card {
+    min-height: 250px;
+}
+
+.status-display {
     display: flex;
     align-items: center;
-    gap: 18px;
-    margin-bottom: 24px;
     justify-content: center;
+    gap: 22px;
+    margin-bottom: 26px;
 }
 
 .status-text {
     font-family: Georgia, serif;
     font-size: 42px;
+    font-weight: 700;
+    color: #ff1a1a;
+}
+
+.warning-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background-color: #ff1a1a;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 42px;
     font-weight: bold;
+    line-height: 1;
 }
 
-.status-icon {
-    font-size: 52px;
-    color: red;
-}
-
-.card-note {
+.status-note {
+    margin: 0;
+    max-width: 240px;
     color: #6b7280;
-    font-size: 16px;
-    max-width: 220px;
+    font-size: 17px;
+    line-height: 1.2;
 }
 
 /* Overview card */
