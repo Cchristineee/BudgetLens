@@ -10,7 +10,7 @@ body {
 }
 
 .dashboard-layout {
-    displauy: flex;
+    display: flex;
     min-height: 100vh;
 }
 
