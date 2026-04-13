@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BudgetLens - Dashboard/Home</title>
+    <link rel="stylesheet" href="Home.css">
+</head>
+<body>
+     <div class="dashboard-layout"> 
+        <!--Side Bar-->
+        <aside class="sidebar>
+            <div class="sidebar-header">
+              <h1 class="logo">Budget<span>Lens</span></h1>
+              <!-- This is going to be replaced with the actual username of the user -->
+              <p class="username">John Doe</p>
+            </div>
+
+            <!-- The actual sidebar navigation; will addd icons for them at a later point -->
+            <nav class="sidebar-nav">
+                <a href="Home.html" class="nav-item active">Home</a>
+                <a href="MyList.html" class="nav-item">My List</a>
+                <a href="MyBudget.html" class="nav-item">My Budget</a>
+                <a href="ScanReceipt.html" class="nav-item">Scan Receipt</a>
+                <a href="Settings.html" class="nav-item">Settings</a>
+            </nav>
+        </aside>
+
+        <!--Main Content-->
+        <main class="main-content">
+            <header class="dashboard">
+                <h2>Welcome, John Doe!</h2>
+                <p>Here's your budget overview for April 2026</p>
+            </header>
+
+        <!-- Top -->
+         <section class="top-cards">
+            <div class="card status-card">
+                <h3>Spending Status</h3>
+                <div class="status-row">
+                    <span class="status-text">Bad</span>
+                    <span class="status-icon">⚠️</span>
+                </div>
+                <p class="card-note">You've exceeded 2 budget categories this month.</p>
+            </div>
+
+            <div class="card overview-card">
+                <h3>Monthly Overview</h3>
+                <p class="small-label">Total spent this month</p>
+                <div class="budget-line">
+                    <span class="amount">$900.51</span>
+                    <span class="budget-text">of $2,000.00 budget</span>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+
+                <div class="progress-info">
+                    <span>45% used</span>
+                    <span>$1,099.49 remaining</span>
+                </div>
+            </div>
+     </div>
+     </section>
+
+     <!-- Ugent Items-->
+      <section class="card urgent-card">
+        <h3>Urgent Items</h3>
+
+        <div class="item-row">
+        <div>
+            <h4>Cheese</h4>
+            <p>Family shopping list</p>
+        </div>
+        <button>Add to cart</button>
+        </div>
+
+        <div class="item-row">
+        <div>
+            <h4>Multivitamins</h4>
+            <p>My Medicine</p>
+        </div>
+        <button>Add to cart</button>
+        </div>
+
+        <a href="#" class="view-link">View all items →</a>
+      </section>
+</body>
+</html>
