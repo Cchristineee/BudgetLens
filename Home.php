@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
             <div class="sidebar-header">
               <h1 class="logo">Budget<span>Lens</span></h1>
               <!-- This is going to be replaced with the actual username of the user -->
-              <p class="username">John Doe</p>
+              <p> Welcome back <?php echo $_SESSION['username']; ?>!</p>
             </div>
 
             <!-- The actual sidebar navigation -->
@@ -44,7 +45,7 @@
         <!--Main Content-->
         <main class="main-content">
             <header class="dashboard">
-                <h2>Welcome, John Doe!</h2>
+                <h2>Welcome, <?php echo $_SESSION['username']; ?>!</h2>
                 <p>Here's your budget overview for April 2026</p>
             </header>
 
