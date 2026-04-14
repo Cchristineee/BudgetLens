@@ -51,6 +51,7 @@
                 <p>Here's your budget overview for April 2026</p>
             </header>
 
+        <!-- Spending Status -->
          <section class="top-cards">
             <div class="card status-card">
                 <h3>Spending Status</h3>
@@ -59,10 +60,10 @@
                     <span class="status-text">Bad</span>
                     <span class="warning-circle">!</span>
                 </div>
-
                 <p class="status-note">You've exceeded 2 budget categories this month.</p>
             </div>
 
+            <!-- Overview card -->
             <div class="card overview-card">
                 <h3>Monthly Overview</h3>
 
@@ -72,7 +73,6 @@
                     <span class="overview-amount">$900.51</span>
                     <span class="overview-budget-text">of $2,000.00 budget</span>
                 </div>
-
                 <div class="progress-bar">
                     <div class="progress-fill"></div>
                 </div>
