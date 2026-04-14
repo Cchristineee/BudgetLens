@@ -8,9 +8,16 @@
     <link rel="stylesheet" href="Home.css">
 </head>
 <body>
-     <div class="dashboard-layout"> 
-        <!--Side Bar-->
-        <aside class="sidebar>
+    <!-- Dashboard header -->
+            <main class="main-content">
+                <header class="dashboard-header">
+                    <h2>Welcome,<?php echo $_SESSION['username']; ?>!</h2>
+                    <p>Here's your budget overview for April 2026</p>
+                </header>
+        
+            <div class="dashboard-layout"> 
+        <!-- Dashboard side Bar-->
+        <aside class="sidebar">
             <div class="sidebar-header">
               <h1 class="logo">Budget<span>Lens</span></h1>
               <!-- This is going to be replaced with the actual username of the user -->
@@ -20,7 +27,7 @@
             <!-- The actual sidebar navigation -->
             <nav class="sidebar-nav">
                 <a href="Home.html" class="nav-item active">
-                    <span class="nav-icon">⌂</span>
+                    <span class="nav-icon">🏠</span>
                     <span>Home</span>
                 </a>
                 <a href="MyList.html" class="nav-item active">
@@ -39,8 +46,10 @@
                     <span class="nav-icon">⚙️</span>
                     <span>Settings</span>
                 </a>
-            </nav>
+                </nav>
         </aside>
+            </div>
+        <body>
 
         <!--Main Content-->
         <main class="main-content">
