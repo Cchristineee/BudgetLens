@@ -10,39 +10,10 @@
 <body>
 
     <div class="dashboard-layout">
-
-        <!-- Sidebar --> 
-        <aside class="sidebar">
-            <div class="sidebar-header">
-              <h1 class="logo">Budget<span>Lens</span></h1>
-                <p class="username">Welcome back <?php echo htmlspecialchars($_SESSION['username']); ?>!</p>
-            </div>
-
-            <!-- The actual sidebar navigation -->
-            <nav class="sidebar-nav">
-                <a href="Home.php" class="nav-item active">
-                    <span class="nav-icon">🏠</span>
-                    <span>Home</span>
-                </a>
-                <a href="MyList.php" class="nav-item active">
-                    <span class="nav-icon">≣</span>
-                    <span>My List</span>
-                </a>
-                <a href="MyBudget.php" class="nav-item active">
-                    <span class="nav-icon">$</span>
-                    <span>My Budget</span>
-                </a>
-                <a href="ScanReceipt.php" class="nav-item active">
-                    <span class="nav-icon">📷</span>
-                    <span>Scan Receipt</span>
-                </a>
-                <a href="Settings.php" class="nav-item active">
-                    <span class="nav-icon">⚙️</span>
-                    <span>Settings</span>
-                </a>
-            </nav>
-        </aside>
-
+        
+    <!-- Sidebar Nav -->
+    <?php include 'sidebar.php'; ?>
+    
         <!--Main Content-->
         <main class="main-content">
             <header class="dashboard">
@@ -83,30 +54,29 @@
                     <span>$1,099.49 remaining</span>
                 </div>
             </div>
-     </div>
-     </section>
+        
+             <!-- Ugent Items-->
+            <div class="card urgent-card">
+            <h3>Urgent Items</h3>
 
-     <!-- Ugent Items-->
-      <section class="card urgent-card">
-        <h3>Urgent Items</h3>
-
-        <div class="item-row">
-        <div class="item-info">
+            <div class="item-row">
+            <div class="item-info">
             <h4>Cheese</h4>
             <p>Family shopping list</p>
-        </div>
-        <button class="item-btn">Add to cart</button>
-        </div>
+            </div>
+            <button class="item-btn">Add to cart</button>
+            </div>
 
-        <div class="item-row">
-        <div class="item-info">
+            <div class="item-row">
+            <div class="item-info">
             <h4>Multivitamins</h4>
             <p>My Medicine</p>
-        </div>
-        <button class="item-btn">Add to cart</button>
-        </div>
+            </div>
+            <button class="item-btn">Add to cart</button>
+            </div>
 
-        <a href="MyList.php" class="view-all-link">View all items →</a>
-      </section>
+            <a href="MyList.php" class="view-all-link">View all items →</a>
+            </div>       
+     </section>
 </body>
 </html>
