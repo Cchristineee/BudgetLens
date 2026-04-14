@@ -13,7 +13,6 @@ body {
     background-color: #f7f7f7;
     color: #222;
 }
-
 .dashboard-layout {
     display: flex;
     min-height: 100vh;
