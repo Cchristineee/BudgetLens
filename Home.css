@@ -17,7 +17,9 @@ body {
 .dashboard-layout {
     display: flex;
     min-height: 100vh;
+    align-items: flex-start;
 }
+
 /* Sidebar styles */
 .sidebar {
     width: 255px;
@@ -41,9 +43,8 @@ body {
     color: black;
 }
 /* Lens logo color blue */
-
-.logo-span {
-    color:#6b9bb3;
+.logo span {
+    color: #6b9bb3;
 }
 
 .username {
@@ -88,6 +89,8 @@ body {
 .main-content {
     flex: 1;
     padding: 24px 34px 28px;
+
+
 } 
 .dashboard-header {
     margin-bottom: 22px;
@@ -101,7 +104,7 @@ body {
 }
 
 .dashboard-header p {
-    margin-top: 6px 0 0;
+    margin: 6px 0 0;
     color: #7b7b7b;
     font-size: 16px;
 }
@@ -113,6 +116,7 @@ body {
     grid-template-columns: 330px 1fr;
     gap: 16px;
     margin-top: 28px;
+    margin-bottom: 20px;
 }
 
 /* Card styles */
