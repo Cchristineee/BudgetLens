@@ -15,7 +15,7 @@
         <aside class="sidebar">
             <div class="sidebar-header">
               <h1 class="logo">Budget<span>Lens</span></h1>
-              <p> Welcome back <?php echo $_SESSION['username']; ?>!</p>
+                <p class="username">Welcome back <?php echo htmlspecialchars($_SESSION['username']); ?>!</p>
             </div>
 
             <!-- The actual sidebar navigation -->
@@ -46,7 +46,7 @@
         <!--Main Content-->
         <main class="main-content">
             <header class="dashboard">
-                <h2>Welcome, <?php echo $_SESSION['username']; ?>!</h2>
+                <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
                 <!-- I want to see if we can use real date/time that would sync -->
                 <p>Here's your budget overview for April 2026</p>
             </header>
@@ -60,6 +60,7 @@
                     <span class="status-text">Bad</span>
                     <span class="warning-circle">!</span>
                 </div>
+
                 <p class="status-note">You've exceeded 2 budget categories this month.</p>
             </div>
 
