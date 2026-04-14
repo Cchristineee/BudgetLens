@@ -8,66 +8,59 @@
     <link rel="stylesheet" href="Home.css">
 </head>
 <body>
-    <!-- Dashboard header -->
-            <main class="main-content">
-                <header class="dashboard-header">
-                    <h2>Welcome,<?php echo $_SESSION['username']; ?>!</h2>
-                    <p>Here's your budget overview for April 2026</p>
-                </header>
-        
-            <div class="dashboard-layout"> 
-        <!-- Dashboard side Bar-->
+
+    <div class="dashboard-layout">
+
+        <!-- Sidebar --> 
         <aside class="sidebar">
             <div class="sidebar-header">
               <h1 class="logo">Budget<span>Lens</span></h1>
-              <!-- This is going to be replaced with the actual username of the user -->
               <p> Welcome back <?php echo $_SESSION['username']; ?>!</p>
             </div>
 
             <!-- The actual sidebar navigation -->
             <nav class="sidebar-nav">
-                <a href="Home.html" class="nav-item active">
+                <a href="Home.php" class="nav-item active">
                     <span class="nav-icon">🏠</span>
                     <span>Home</span>
                 </a>
-                <a href="MyList.html" class="nav-item active">
+                <a href="MyList.php" class="nav-item active">
                     <span class="nav-icon">≣</span>
                     <span>My List</span>
                 </a>
-                <a href="MyBudget.html" class="nav-item active">
+                <a href="MyBudget.php" class="nav-item active">
                     <span class="nav-icon">$</span>
                     <span>My Budget</span>
                 </a>
-                <a href="ScanReceipt.html" class="nav-item active">
+                <a href="ScanReceipt.php" class="nav-item active">
                     <span class="nav-icon">📷</span>
                     <span>Scan Receipt</span>
                 </a>
-                <a href="Settings.html" class="nav-item active">
+                <a href="Settings.php" class="nav-item active">
                     <span class="nav-icon">⚙️</span>
                     <span>Settings</span>
                 </a>
-                </nav>
+            </nav>
         </aside>
-            </div>
-        <body>
 
         <!--Main Content-->
         <main class="main-content">
             <header class="dashboard">
                 <h2>Welcome, <?php echo $_SESSION['username']; ?>!</h2>
+                <!-- I want to see if we can use real date/time that would sync -->
                 <p>Here's your budget overview for April 2026</p>
             </header>
 
-        <!-- Top -->
          <section class="top-cards">
             <div class="card status-card">
                 <h3>Spending Status</h3>
                 
-                <div class="status-row">
+                <div class="status-display">
                     <span class="status-text">Bad</span>
                     <span class="warning-circle">!</span>
                 </div>
-                <p class="card-note">You've exceeded 2 budget categories this month.</p>
+
+                <p class="status-note">You've exceeded 2 budget categories this month.</p>
             </div>
 
             <div class="card overview-card">
@@ -75,7 +68,7 @@
 
                 <p class="overview-label">Total spent this month</p>
 
-                <div class="budget-line">
+                <div class="overview-amount-line">
                     <span class="overview-amount">$900.51</span>
                     <span class="overview-budget-text">of $2,000.00 budget</span>
                 </div>
@@ -112,7 +105,7 @@
         <button class="item-btn">Add to cart</button>
         </div>
 
-        <a href="MyList.html" class="view-all-link">View all items →</a>
+        <a href="MyList.php" class="view-all-link">View all items →</a>
       </section>
 </body>
 </html>
