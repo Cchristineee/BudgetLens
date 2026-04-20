@@ -35,7 +35,7 @@ body {
     padding:0 10px;
 }
 
-/* Budget logo color black */
+/* Budget logo color black ★ */
 .logo {
     margin: 0;
     font-family: Georgia, serif;
@@ -45,7 +45,7 @@ body {
     color: black;
 }
 
-/* Lens logo color blue */
+/* Lens logo color blue ★ */
 .logo span {
     color: #6b9bb3;
 }
@@ -56,7 +56,7 @@ body {
     color: #7a7a7a
 }
 
-/* Sidebar navigation */
+/* Sidebar navigation ★ */
 .sidebar-nav {
     display: flex;
     flex-direction: column;
@@ -101,7 +101,7 @@ body {
     font-size: 17px;
 }
 
-/* Main content */
+/* Main content ★ */
 .main-content {
     flex: 1;
     padding: 42px 56px;
@@ -135,4 +135,121 @@ body {
 
 .create-budget-btn:hover {
     opacity: 0.9;
+}
+
+/* Spending summary cards ★ */ 
+.spending-summary {
+    background-color: #f8f8f8;
+    border: 1px solid #d9d9d9;
+    border-radius: 16px;
+    padding: 28px 30px;
+    margin-bottom: 42px;
+}
+
+.summary-label {
+    margin: 0 0 10px;
+    font-size: 22px;
+    color: #6b7280;
+}
+
+.summary-amount {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.spent {
+    font-family: Georgia, serif;
+    font-size: 52px;
+    font-weight: 700;
+    color: #111;
+}
+
+.total {
+    font-size: 24px;
+    color: #6b7280;
+}
+
+/* Budgeting cards ★ */ 
+.budgeting-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 34px 38px; 
+}
+
+.budgeting-card {
+    background-color: #f8f8f8;
+    border: 1px solid #d9d9d9;
+    border-radius: 16px;
+    padding: 24px 20px 26px;
+    min-height: 160px;
+}
+
+.card-tile {
+    background-color: #f8f8f8;
+    border: 1px solid #d9d9d9;
+    border-radius: 16px;
+    padding: 24px 20px 26px;
+    min-height: 160px;
+}
+
+.card-text {
+    margin: 0 0 18px;
+    font-size: 17px;
+    color: #6b7280;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 14px;
+    background-color: #e5e5e5;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #5f9db4;
+    border-radius: 999px;
+}
+
+.progress-fill.danger {
+  background-color: #ef4444;
+}
+
+/* Budgeting Categories ★ */ 
+.food {
+    color: #059669;
+}
+
+.health {
+    color: #ef4444;
+}
+
+.household {
+    color: #111;
+}
+
+.clothing {
+    color: #db2777;
+}
+
+/* To make it responsive ★ */ 
+@media (max-width: 900px) {
+.budget-cards {
+    grid-template-columns: 1fr;
+}
+
+.main-content {
+    padding: 30px 24px;
+
+    }
+
+.page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    }
+
 }
