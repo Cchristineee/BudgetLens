@@ -29,26 +29,19 @@
      <hr class="divider"> 
      
      <!-- Feats Section-->
-      <!-- I'm trying to make these hover to show the features of the website / Still figuring it out-->
      <section class="features-section">
-        <div class="feature">
-            <div class="circle"></div>
-            <h3>Shopping List</h3>
-            <p>Create & Share Lists</p>
-        </div>
+            <div id="feature-root"></div>
+        </section>
+    </main>    
 
-        <div class="feature">
-            <div class="circle"></div>
-            <h3>Scan Receipts</h3>
-            <p>OCR Auto-Tracking</p>
-        </div>
+     <!-- Feats using React -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- This doesnt work
+    <script src="https://unpkg.com/react-icons@4.12.0/dist/react-icons.min.js"></script>
+    -->
 
-        <div class="feature">
-            <div class="circle"></div>
-            <h3>Budget Alerts</h3>
-            <p>Real time Warnings</p>
-        </div>
-     </section>  
-     </main>     
+    <script type="text/babel" src="features.jsx"></script>
 </body>
 </html>
