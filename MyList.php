@@ -130,7 +130,7 @@ try {
     </script>
 
 
-        <!-- Example list cards - in the real application, these would be generated dynamically from the database ❤ -->
+        <!-- Example list cards - in the real application, these would be generated dynamically from the database 
         <section class='lists-section'>
             <a href="#" class='list-card'>
                 <div class='list-left'>
@@ -162,6 +162,7 @@ try {
                     <span class='item-count'>8 items</span>
                 </div>
             </a>
+        ❤ -->
         </section>
     </main>
 </body>
