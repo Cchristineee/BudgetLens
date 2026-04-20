@@ -1,0 +1,138 @@
+* {
+    box-sizing: border-box;
+}
+
+html, 
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #222;
+}
+
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+    align-items: stretch;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 255px;
+    min-height: 100vh;
+    background-color: #f1f1f1;
+    padding: 24px 10px;
+    border-right: 1px solid #ddd;
+}
+
+.sidebar-header {
+    margin-bottom: 28px;
+    padding:0 10px;
+}
+
+/* Budget logo color black */
+.logo {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 1.1;
+    color: black;
+}
+
+/* Lens logo color blue */
+.logo span {
+    color: #6b9bb3;
+}
+
+.username {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #7a7a7a
+}
+
+/* Sidebar navigation */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #222;
+    padding:10px 12px;
+    border-radius: 10px;
+    font-size: 16px;
+    position: relative;    
+}
+
+.nav-item:hover {
+    background-color: #e0e0e0;
+}
+
+.nav-item.active {
+    background-color: #b3b3b3;
+    font-weight: 600;
+}
+
+.nav-item.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 4px;
+    background-color: #b3b3b3;
+    border-radius: 4px;
+}
+
+.nav-icon {
+    width: 14px;
+    text-align: center;
+    font-size: 17px;
+}
+
+/* Main content */
+.main-content {
+    flex: 1;
+    padding: 42px 56px;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 42px;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 36px;
+    font-weight: 500;
+    color: #111;
+}
+
+.create-budget-btn {
+    text-decoration: none;
+    background-color: #6e9cb3;
+    color: white;
+    padding: 14px 30px;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: Georgia, serif;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.create-budget-btn:hover {
+    opacity: 0.9;
+}
