@@ -1,5 +1,4 @@
-
-        * {
+       * {
             box-sizing: border-box;
         }
 
@@ -65,18 +64,17 @@
 
         /* Main Landing Page */
         .landing-page {
-            height:calc(100vh-78px);
+            height:calc(100vh - 78px);
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            padding: 12px 30px 16px;
+            padding: 12px 20px 16px;
         }
-
 
         /* image section */
         .image-section {
             text-align: center;
-            padding: 8px 20px 6px;
+            padding: 8px 10px 6px;
         }
         .image-section img {
             width: 180px;
@@ -111,23 +109,32 @@
 
         /* features section */
         .features-section {
-            display: flex;
-            justify-content: center;
-            gap: 110px;
-            padding: 0;
-            text-align: center;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        text-align: center;
         }
 
+        #feature-root {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        
         .feature {
             width: 220px;
         }
-
-        .feature .circle {
+    
+        .circle {
             width: 110px;
             height: 110px;
-            background-color: #d3d3d3;
             border-radius: 50%;
             margin: 0 auto 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            color: white;
         }
 
         .feature h3 {
