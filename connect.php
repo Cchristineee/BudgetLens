@@ -1,5 +1,3 @@
-<!-- this allows you to connect to myphp locally (please dont change ) --> 
-
 <?php
 $servername = "localhost";
 $username = "root";
