@@ -12,6 +12,7 @@ session_start()
 <body>
     <div class="dashboard-layout">
     
+    <!-- Reusing sidebar throughout ★ -->
     <?php include 'sidebar.php'; ?>
 
      <main class="main-content">
@@ -20,7 +21,7 @@ session_start()
             <a href="#" class="create-budget-btn">+ Create Budget</a>
         </div>
 
-        <!-- Spending Status cards ❤ -->
+        <!-- Spending Status cards ★ -->
         <section class="budgeting-cards">
             <div class="budgeting-card">
                 <h3 class ="card-title food">🍱 Food</h3>
