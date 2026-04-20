@@ -12,14 +12,14 @@ const features = [
         title: "Scan Reciepts",
         subtitle: "OCR Auto-Tracking",
         description:
-        "Easily track your spending by scanning your receipts. OCR technology can help organize purchases automatically.",
+        "Scan receipts and organize purchases automatically so you can track your spending faster.",
         icon: "🧾"
     },
     {
         title: "Budget Alerts",
-        subtitle: "Real-time Warnings",
+        subtitle: "Real-Time Warnings",
         description:
-        "Set custom budget alerts and get notified when you're approaching or exceeding your budget.",
+        "Set budget alerts and get notified before you go over your spending limit.",
         icon: "🔔"
     },
     ];
