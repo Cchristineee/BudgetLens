@@ -116,25 +116,32 @@
         }
 
         #feature-root {
-            display: flex;
-            justify-content: center;
-            width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 70px;
+        width: 100%;
+        flex-wrap: wrap;
         }
         
         .feature {
             width: 220px;
+            transition: transform 0.2s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-6px);
         }
     
         .circle {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            margin: 0 auto 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 34px;
-            color: white;
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        margin: 0 auto 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 42px;
+        color: white;
         }
 
         .feature h3 {
