@@ -172,18 +172,18 @@ body {
 }
 
 /* Budgeting cards ★ */ 
-.budgeting-cards {
+.budget-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 34px 38px; 
+    grid-template-columns: repeat(2, 1fr); /* this makes it so its 2 cards per row ★ */ 
+    gap: 24px;
+    margin-top: 30px;
 }
 
-.budgeting-card {
-    background-color: #f8f8f8;
-    border: 1px solid #d9d9d9;
-    border-radius: 16px;
-    padding: 24px 20px 26px;
-    min-height: 160px;
+.budget-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #e0e0e0;
 }
 
 .card-tile {
@@ -233,23 +233,4 @@ body {
 
 .clothing {
     color: #db2777;
-}
-
-/* To make it responsive ★ */ 
-@media (max-width: 900px) {
-.budget-cards {
-    grid-template-columns: 1fr;
-}
-
-.main-content {
-    padding: 30px 24px;
-
-    }
-
-.page-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    }
-
 }
