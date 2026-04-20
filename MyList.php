@@ -105,7 +105,7 @@ if ($uID) {
 
                 // test
                 const text = await response.text();
-console.log("RAW RESPONSE:", text);
+            console.log("RAW RESPONSE:", text);
 
 let result;
 try {
@@ -130,7 +130,7 @@ try {
     </script>
 
 
-        <!-- Example list cards - in the real application, these would be generated dynamically from the database -->
+        <!-- Example list cards - in the real application, these would be generated dynamically from the database ❤ -->
         <section class='lists-section'>
             <a href="#" class='list-card'>
                 <div class='list-left'>
