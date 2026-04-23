@@ -43,5 +43,11 @@ function isActive($pageName) {
             <span class="nav-icon"> ⚙️</span>
             <span>Settings</span>
         </a>
+        
+        <!-- Sign out leads back to landing page ★ -->
+        <a href="LandingPage.html" class="nav-item <?php echo isActive('Settings.php'); ?>">
+            <span class="nav-icon"> 🚶</span>
+            <span>Sign Out</span>
+        </a>
     </nav>
 </aside>

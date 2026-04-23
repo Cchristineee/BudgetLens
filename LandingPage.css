@@ -5,17 +5,16 @@
         html, body {
             margin: 0;
             padding: 0;
-            height: 100%;
+            min-height: 100%;
         }
 
         body {
             font-family: Georgia, serif;
             background-color: #F2F2F2;
             color: #222;
-            overflow: hidden;
         }
         /* Nav Bar */
-         .navbar {
+        .navbar {
             height: 78px;
             display: flex;
             justify-content: space-between;
@@ -45,7 +44,7 @@
             padding: 12px 24px;
             border-radius: 14px;
             font-size: 18px;
-            font-family: Georgia, Serif;
+            font-family: Georgia, serif;
             box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
             display: inline-block;
         }
@@ -64,7 +63,7 @@
 
         /* Main Landing Page */
         .landing-page {
-            height:calc(100vh - 78px);
+            min-height: calc(100vh - 78px);
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -83,7 +82,7 @@
             margin: 0 auto 8px;
         }
 
-        image-section h2 {
+        .image-section h2 {
             margin: 0 0 8px;
             font-size: 52px;
             font-weight: 500;
@@ -158,4 +157,69 @@
 
         .signup:hover, .login:hover {
             opacity: 0.9;
+        }
+
+        /* Footer links ★ */
+        .footer {
+        background-color: #2a2a2a;
+        color: #ddd;
+        padding: 40px 50px 20px;
+        margin-top: 80px;
+        }
+
+        .footer-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 24px;
+        }
+
+        .foooter-left {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        }
+
+        /* Footer logo ★ */
+        .footer-logo {
+        font-size: 32px;
+        margin: 0; 
+        color: white;
+        }
+
+        .footer-logo span {
+        color: #5d91a8;
+        }
+
+        .footer-left p {
+        margin: 0;
+        color: #bdbdbd;
+        font-size: 16px;
+        }
+
+        /* Links ★ */ 
+        .footer-links {
+        display: flex;
+        gap: 24px;
+        flex-wrap: wrap;
+        }
+
+        .footer-links a {
+        text-decoration: none;
+        color: #bbb;
+        font-size: 16px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Bottom ★ */ 
+        .footer-bottom {
+        border-top: 1px solid #444;
+        margin-top: 24px;
+        padding-top: 14px;
+        text-align: center;
+        font-size: 14px;
+        color: #888;
         }
