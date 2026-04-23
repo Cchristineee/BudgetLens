@@ -43,13 +43,13 @@ if ($uID) {
 
         <!--Popup when you click list ❤ -->
         <div id="popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center;">
-        <div style="background: white; padding: 20px; border-radius: 8px; width: 250px; text-align: center;">
+        <div style="background: white; padding: 30px; border-radius: 20px; width: 40%; min-height: 20%; display: flex; flex-direction: column; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
             <h3 style="margin-top: 0;">Create a new list</h3>
             
-            <input type="text" id="listName" placeholder="Enter list name" required style="width: 90%; padding: 8px; margin-bottom: 15px;">
+            <input type="text" id="listName" placeholder="Enter list name" required style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 16px;">
             
-            <div style="display: flex; gap: 10px;">
-                <button onclick="save()" style="flex: 1; padding: 8px; background: green; color: white; border: none; cursor: pointer;">Create</button>
+            <div style="display: flex; gap: 10px; justify-content: center;">
+                <button onclick="save()" style="flex: 1; padding: 8px; background: #6e9cb3; color: white; border: none; cursor: pointer;">Create</button>
                 <button onclick="closePopup()" style="flex: 1; padding: 8px; background: grey; color: white; border: none; cursor: pointer;">Cancel</button>
             </div>
         </div>
@@ -98,7 +98,7 @@ if ($uID) {
                     body: JSON.stringify({ list_name: listName })
                 });
 
-                // Check if the server actually returned a 200 OK status
+                // Check if the server actually returned a OK status (check) ❤
         if (!response.ok) {
             throw new Error(`Server error: ${response.status}`);
         }
