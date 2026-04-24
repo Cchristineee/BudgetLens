@@ -1,24 +1,18 @@
 * {
     box-sizing: border-box;
-}
-
-html, 
-body {
     margin: 0;
     padding: 0;
-    min-height: 100%;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f7f7f7;
-    color: #222;
+    background-color: #f8f8f8;
+    color: #111;
 }
 
 .dashboard-layout {
     display: flex;
     min-height: 100vh;
-    align-items: stretch;
 }
 
 /* Sidebar */
@@ -104,7 +98,182 @@ body {
 /* Main content ★ */
 .main-content {
     flex: 1;
-    padding: 42px 56px;
+    padding: 24px 36px 40px;
+}
+
+/* Breadcrumb nav ★ */
+.breadcrumb {
+    font-size: 18px;
+    margin-bottom: 32px;
+    color: #7a7a7a;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #7a7a7a;
+}
+
+.breadcrumb .current-list {
+    color: #6d97ac;
+    font-weight: 600;
+}
+
+.breadcrumb span {
+    margin: 0 4px;
+}
+
+/* list heading ★ */
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 48px;
+    gap: 20px;
+}
+
+.list-header-section {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+/* to go back ★ */
+.back-arrow {
+    font-size: 48px;
+    text-decoration: none;
+    color:#111;
+    line-height: 1;
+}
+
+.list-title-section h1{
+    font-size: 34px;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+/* Shared Badge ★ */
+.shared-badge {
+    background-color: #c9f0db;
+    color: #0c9b63;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Header Buttons ★ */
+.header-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+.action-btn {
+    text-decoration: none;
+    padding: 16px 24px;
+    border-radius: 10px;
+    font-size: 16px;
+    min-width: 120px;
+    text-align: center;
+    border: 1px solid #cfd6dc;
+}
+.action-btn.secondary {
+    background-color: #fff;
+    color: #111;
+}
+
+.action-btn.primary {
+    background-color: #6d97ac;
+    color: #fff;
+    border: none;
+}
+
+.action-btn.danger-outline {
+    background-color: #fff;
+    color: #ef4444;
+    border: 1px solid #ef4444;
+}
+
+/* Main list card ★ */
+.list-card {
+    max-width: 950px;
+    background-color: #fff;
+    border: 1px solid #dedede;
+    border-radius: 18px;
+    padding: 26px 28px;
+}
+
+/* Item row ★ */
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px solid #ececec;
+    gap: 20px;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+}
+
+.item-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.item-left input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    margin-top: 4px;
+    accent-color: #6d97ac;
+}
+
+.item-info h3 {
+    font-size: 19px;
+    margin-bottom: 6px;
+    font-weight: 700;
+}
+
+.item-info p {
+    font-size: 15px;
+    color: #667085;
+}
+
+/* Item buttons ★ */
+.item-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.small-btn {
+    text-decoration: none;
+    padding: 9px 16px;
+    border-radius: 10px;
+    font-size: 15px;
+    border: 1px solid #cfd6dc;
+}
+
+.edit-btn {
+    color: #667085;
+    background-color: #fff;
+}
+
+.delete-btn {
+    color: #ef4444;
+    background-color: #fff;
+    border: 1px solid #ef4444;
+}
+
+/* Completed item ★ */
+.list-item.completed .item-info h3 {
+    text-decoration: line-through;
+    color: #7b7b7b;
+}
+
+.list-item.completed input[type="checkbox"] {
+    accent-color: #5f8ea3;
 }
 
 .page-header {
