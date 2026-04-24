@@ -44,7 +44,7 @@ if ($uID) {
         <!--Popup when you click list ❤ -->
         <div id="popup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center;">
         <div style="background: white; padding: 30px; border-radius: 20px; width: 40%; min-height: 20%; display: flex; flex-direction: column; box-shadow: 0 20px 60px rgba(0,0,0,0.5);">
-            <h3 style="margin-top: 0;">Create a new list</h3>
+            <h3 style="margin-top: 0;text-align: center;">Create a new list</h3>
             
             <input type="text" id="listName" placeholder="Enter list name" required style="width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 16px;">
             
