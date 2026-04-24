@@ -123,12 +123,12 @@
         }
         
         .feature {
-            width: 220px;
-            transition: transform 0.2s ease;
+        width: 220px;
+        transition: transform 0.2s ease;
         }
 
         .feature:hover {
-            transform: translateY(-6px);
+        transform: translateY(-6px);
         }
     
         .circle {
@@ -180,6 +180,35 @@
         gap: 8px;
         }
 
+        .footer-links {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+        }
+
+        .footer-links a {
+        text-decoration: none;
+        color: #bbb;
+        font-size: 16px;
+        }
+
+        .footer-links a:hover {
+        color: white;
+        }
+   
+        .github-link img {
+        width: 28px;
+        height: 28px;
+        display: block;
+        filter: brightness(0) invert(1);
+        transition: transform 0.2s ease;
+        }
+
+        .github-link:hover img {
+        transform: scale(1.1);
+        }
+
         /* Footer logo ★ */
         .footer-logo {
         font-size: 32px;
@@ -197,23 +226,6 @@
         font-size: 16px;
         }
 
-        /* Links ★ */ 
-        .footer-links {
-        display: flex;
-        gap: 24px;
-        flex-wrap: wrap;
-        }
-
-        .footer-links a {
-        text-decoration: none;
-        color: #bbb;
-        font-size: 16px;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
         /* Bottom ★ */ 
         .footer-bottom {
         border-top: 1px solid #444;
@@ -224,21 +236,5 @@
         color: #888;
         }
 
-        /* GitHub SVG ★ */
-        .github-link img {
-        width: 28px;
-        height: 28px;
-        filter: brightness(0) invert(1); 
-        transition: transform 0.2s ease;
-        }
-
-        .github-icon {
-        width: 28px;
-        height: 28px;
-        fill: white; 
-        transition: transform 0.2s ease;
-        }
-
-        .github-link img:hover {
-        transform: scale(1.1);
-        }
+    
+    
