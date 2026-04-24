@@ -29,14 +29,15 @@ session_start();
     </div>
      
     <!-- Heading ★ -->
-    <div class="list-header">
+   <div class="list-header"> 
         <div class="list-title-section">
         <a href="mylist.php" class="back-arrow">←</a>
         <h1>Food</h1>
-        <span class="shared-badge">Shared</span>
-    </div>
+        
+   </div>
 
     <div class="header-actions">
+        <span class="shared-badge">Shared</span>
         <a href="#" class="action-btn secondary">Share</a>
         <a href="#" class="action-btn primary">Add Item +</a>
         <a href="#" class="action-btn danger-outline">Delete List</a>
