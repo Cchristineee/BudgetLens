@@ -219,6 +219,11 @@ body {
     width: 100%;
 }
 
+.budget-card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
 .card-title {
     margin: 0 0 14px;
     font-size: 24px;
