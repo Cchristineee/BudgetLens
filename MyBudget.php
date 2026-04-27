@@ -116,8 +116,10 @@ if ($uID && $budgetResult && $budgetResult->num_rows > 0) {
         $percent = min(100, max(0, $percent)); // 
 
         // Status color class ❤ 
-        $statusClass = ($remaining <= 0) ? "#e74c3c" : "#27ae60";
-        ?>
+        $remaining = $row['remaining_amount_left'];
+            $limit = $row['budgetLimit'];
+            $statusColor = ($remaining <= 0) ? "#e74c3c" : "#27ae60"; // Red if 0 or less, Green otherwise
+            ?>
  
         <!-- Create Boxes for indivdual budgets ❤  -->
         <a href="Edit_Budget.php" class="budget-card-link"> <!-- makes it clickable to edit budget ★ -->
