@@ -17,6 +17,25 @@ if ($uID) {
     $stmt->execute();
     $budgetResult = $stmt->get_result();
 
+   // Calculation for Overview at top 
+   
+   $summarySql = "SELECT 
+   SUM(budgetLimit) AS totalLimit,
+   SUM(budgetLimit - remaining_amount_left) AS totalSpent
+    FROM budget
+    WHERE userID = ?";
+
+$summaryStmt = $conn->prepare($summarySql);
+$summaryStmt->bind_param("i", $uID);
+$summaryStmt->execute();
+$summaryResult = $summaryStmt->get_result();
+
+if ($row = $summaryResult->fetch_assoc()) {
+$summaryLimit = $row['totalLimit'] ?? 0;
+$summarySpent = $row['totalSpent'] ?? 0;
+}
+
+
     // gets categories that users have not chosen yet to put into dropdown ❤
 
     $catSql = "SELECT global_categoryID, name FROM global_category 
@@ -77,7 +96,8 @@ if ($uID) {
         <!-- Summary Card ★ -->
         <div class="summary-card">
             <p>You currently spent</p>
-            <h2>$900.51<span> of $2,000.00</span></h2>
+            <h2>$<?php echo number_format($summarySpent, 2); ?>
+            <span> of $<?php echo number_format($summaryLimit, 2); ?></span> </h2>
         </div>
      
         <!-- Grid Container ★ -->
