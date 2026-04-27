@@ -23,13 +23,12 @@ session_start()
 
         <!-- Summary Card ★ -->
         <div class="summary-card">
-
+            <p>You currently spent</p>
+            <h2>$900.51<span> of $2,000.00</span></h2>
         </div>
      
-        <!-- Spending Status Cards ★ -->
-        <section class="spending"> 
-        
-
+        <!-- Grid Container ★ -->
+         <div class="budget-grid">
         <!--Example cards - these would be generated dynamically from the database ★ -->
             <div class="budget-card">
                 <h3 class ="card-title food">🍱 Food</h3>
@@ -37,6 +36,7 @@ session_start()
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 67%;"></div>
             </div>
+        </div>
 
             <div class="budget-card">
                 <h3 class ="card-title health">❤️ Health</h3>
@@ -44,6 +44,7 @@ session_start()
                 <div class="progress-bar">
                     <div class="progress-fill danger" style="width: 100%;"></div>
             </div>
+        </div>
 
             <div class="budget-card">
                 <h3 class ="card-title household">🏠 Household</h3>
@@ -51,13 +52,17 @@ session_start()
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 60%;"></div>
             </div>  
+        </div>
 
             <div class="budget-card">
                 <h3 class ="card-title clothing">🛍️ Clothing</h3>
                 <p class="card-text">$250.01 of $1,100.00 spent</p>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width: 23%;"></div>
-            </div>     
-</section>
+            </div> 
+        </div> 
+           
+    </div>
+</main>
 </body>
 </html>
