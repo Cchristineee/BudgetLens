@@ -27,6 +27,7 @@
             <div class="card status-card">
                 <h3>Spending Status</h3>
                 
+            <!-- Note: Add status display for check = good check ★ -->
                 <div class="status-display">
                     <span class="status-text">Bad</span>
                     <span class="warning-circle">!</span>
