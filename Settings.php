@@ -36,7 +36,7 @@ session_start()
                 </div>
         </section>
 
-             <!-- Notifications ★  -->
+             <!-- Notifications ★  
             <section class="settings-card">
                 <h2>NOTIFICATIONS</h2>
 
@@ -57,7 +57,7 @@ session_start()
                         <span class="slider"></span>
                     </label>
                 </div>
-            </section>
+            </section> -->
 
                  <!-- Support ★  -->
             <section class="settings-card">
