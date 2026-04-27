@@ -86,12 +86,13 @@ session_start()
                 </tr>
             </tbody>
         </table>
-        </div> 
-</div>
 
         <div class="action-buttons">
             <button class="cancel-btn">Cancel</button>
             <button class="save-btn">Confirm & Save</button>
+        </div>
+
+        </div> 
         </div>
     </section>
     </main>
