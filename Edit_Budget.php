@@ -38,6 +38,7 @@ session_start()
         <select>
             <option>Montly</option>
             <option>Weekly</option>
+            <option>2 Minutes </option>  <!-- Presentation purposes ★ -->
         </select>
 
         <hr>
