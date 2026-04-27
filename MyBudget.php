@@ -30,6 +30,7 @@ session_start()
         <!-- Grid Container ★ -->
          <div class="budget-grid">
         <!--Example cards - these would be generated dynamically from the database ★ -->
+        <a href="Edit_Budget.php" class="budget-card-link"> <!-- makes it clickable to edit budget ★ -->
             <div class="budget-card">
                 <h3 class ="card-title food">🍱 Food</h3>
                 <p class="card-text">$200.50 of $300.00 spent</p>
@@ -38,6 +39,7 @@ session_start()
             </div>
         </div>
 
+        <a href="Edit_Budget.php" class="budget-card-link"> <!-- makes it clickable to edit budget ★ -->
             <div class="budget-card">
                 <h3 class ="card-title health">❤️ Health</h3>
                 <p class="card-text">$150.00 of $100.00 spent</p>
@@ -46,6 +48,7 @@ session_start()
             </div>
         </div>
 
+        <a href="Edit_Budget.php" class="budget-card-link"> <!-- makes it clickable to edit budget ★ -->
             <div class="budget-card">
                 <h3 class ="card-title household">🏠 Household</h3>
                 <p class="card-text">$300.00 of $500.00 spent</p>
@@ -54,6 +57,7 @@ session_start()
             </div>  
         </div>
 
+        <a href="Edit_Budget.php" class="budget-card-link"> <!-- makes it clickable to edit budget ★ -->
             <div class="budget-card">
                 <h3 class ="card-title clothing">🛍️ Clothing</h3>
                 <p class="card-text">$250.01 of $1,100.00 spent</p>
