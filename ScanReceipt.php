@@ -87,6 +87,7 @@ session_start()
             </tbody>
         </table>
         </div> 
+</div>
 
         <div class="action-buttons">
             <button class="cancel-btn">Cancel</button>
