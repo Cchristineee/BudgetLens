@@ -81,22 +81,22 @@ $listInfo = $stmt->get_result()->fetch_assoc();
             ?>
         
         <!-- showing items in the list ❤ -->
-    <div class="list-item">
+                     <div class="list-item">
                     <div class="item-left">
-                        <input type="checkbox">
+                    <input type="checkbox" onchange="toggleComplete(this)">
                         <div class="item-info">
                         <h3><?php echo htmlspecialchars($row['item_name']); ?></h3>
                         <p>Category: <?php echo htmlspecialchars($row['name']); ?> · Est. $<?php echo number_format($row['item_price'], 2); ?></p>
                         </div> 
-                    </div>
+                        </div>
                     
-                    <div class="item-actions">
+                        <div class="item-actions">
                         <a href="#" class="small-btn edit-btn">Edit</a>
-                        <button class ="small-btn delete-btn" onclick="deleteItem(<?php echo $row['itemID']; ?>)">Delete </button>
-                    </div>
-                </div>
+                        <button class ="small-btn delete-btn" onclick="deleteItem(<?php echo $row['itemID']; ?>)">Purchase </button>
+                        </div>
+                        </div>
                 <?php
-        }
+                 }
         ?>
 
 
@@ -252,6 +252,18 @@ $listInfo = $stmt->get_result()->fetch_assoc();
     }
 }
     </script>
+<!-- toggle checkbox -->
+<script>
+function toggleComplete(checkbox) {
+    const listItem = checkbox.closest('.list-item');
+
+    if (checkbox.checked) {
+        listItem.classList.add('completed');
+    } else {
+        listItem.classList.remove('completed');
+    }
+}
+</script>
 
 
     </main>
