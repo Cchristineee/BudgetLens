@@ -99,22 +99,6 @@ $listInfo = $stmt->get_result()->fetch_assoc();
                  }
         ?>
 
-
-    <!-- Completed Item ★ -->
-    <div class="list-item completed">
-                    <div class="item-left">
-                        <input type="checkbox" checked>
-                        <div class="item-info">
-                            <h3>Oat Milk</h3>
-                            <p>Category: Food · Est. $4.25</p>
-                        </div>
-                    </div>
-
-                    <div class="item-actions">
-                        <a href="#" class="small-btn edit-btn">Edit</a>
-                        <a href="#" class="small-btn delete-btn">Delete</a>
-                    </div>
-                </div>
     </section>
 
     <!--Popup when you click list ❤ -->
