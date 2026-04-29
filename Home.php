@@ -1,4 +1,30 @@
-<?php session_start(); ?>
+<?php session_start();
+include "connect.php";
+
+// makes sure you are logged in ❤
+
+if (!isset($_SESSION['user_id'])) {
+    die("Error: You are not logged in. <a href='login.php'>Login here</a>");
+}
+$uID = $_SESSION['user_id']; 
+
+//used for Spending Staus image. if remaining_amount is negative we know they went overbudget in a category ❤
+$overBudget = false;
+
+$sql = "SELECT COUNT(*) as total FROM budget WHERE userID = ? AND remaining_amount_left < 0";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $uID);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+
+//if any budget is overbudget we change overbudget to true and image changes ❤
+if ($row['total'] > 0) {
+    $overBudget = true; 
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,14 +52,23 @@
          <section class="top-cards">
             <div class="card status-card">
                 <h3>Spending Status</h3>
-                
-            <!-- Note: Add status display for check = good check ★ -->
+
+            <!--  Spending Status: If overbudget it will show bad icon else good icon ❤ -->
                 <div class="status-display">
+                <?php if ($overBudget): ?>
                     <span class="status-text">Bad</span>
                     <span class="warning-circle">!</span>
+                    <?php else: ?>
+                    <span class="status-text" style="color: green;">Good</span>
+                    <span class="warning-circle" style="background-color: #008000;">✔</span>
+                    <?php endif; ?>
                 </div>
 
-                <p class="status-note">You've exceeded 2 budget categories this month.</p>
+                 <!-- Shows how many categories are overbudget ❤ -->
+                <?php
+              echo "<p class='status-note'>You've exceeded " . $row['total'] . " budget categories this month  " . $_SESSION['username'] . "</p>";
+              ?>
+
             </div>
 
             <!-- Overview card -->

@@ -26,7 +26,7 @@ session_start()
 
                 <div class="setting-row">
                     <span>Username</span>
-                    <span class="username">@<?php echo $username; ?></span>
+                    <span class="username">@<?php echo htmlspecialchars($_SESSION['username']); ?></span>
                 </div>
 
                 <div class="setting-row">

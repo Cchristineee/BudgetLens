@@ -183,7 +183,7 @@ $listInfo = $stmt->get_result()->fetch_assoc();
 
         //delete item ❤
         async function deleteItem(id) {
-            if (!confirm("Are you sure you want to delete this item?")) return;
+            if (!confirm("Are you sure you want to remove this item?")) return;
         
             try {
                 const response = await fetch('delete_item.php', {
