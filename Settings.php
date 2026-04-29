@@ -19,24 +19,36 @@ session_start()
      <main class="main-content">
             <h1>Settings</h1>
 
-            <!-- Settings Card ★  -->
+            <!-- Settings Cards ★  -->
+
              <!-- Account ★  -->
             <section class="settings-card">
                 <h2>ACCOUNT</h2>
 
                 <div class="setting-row">
                     <span>Username</span>
-                    <span class="username">@<?php echo htmlspecialchars($_SESSION['username']); ?></span>
+                    <span class="username">@<?php echo $username; ?></span>
                 </div>
 
                 <div class="setting-row">
-                    <span>Change Password</span>
-                    <!-- Note to self: create change_password.php file ★ -->
-                    <a href="change_password.php" class="small-btn">Change →</a>
+                    <div class="setting-label">Change Password</div>
+                    <a href="change_password.php" class="small-btn">Change →</a> <!-- Note to self: create change_password.php file ★ -->
                 </div>
         </section>
 
-             <!-- Notifications ★  
+                 <!-- Support ★  -->
+            <section class="settings-card">
+                <h2>SUPPORT</h2>
+
+                <div class="setting-row">
+                    <div class="setting-label">Make a Report / Report Issue</div>
+                    <a href="report_issue.php" class="small-btn">Open →</a> <!-- Note to self: create report_issue.php file ★ -->
+                    </div>
+                </div>
+        </section>
+
+             <!-- These I commented out cause we're probably not going to implement it
+            Notifications ★  
             <section class="settings-card">
                 <h2>NOTIFICATIONS</h2>
 
@@ -58,17 +70,6 @@ session_start()
                     </label>
                 </div>
             </section> -->
-
-                 <!-- Support ★  -->
-            <section class="settings-card">
-                <h2>SUPPORT</h2>
-
-                <div class="setting-row no-border">
-                    <span>Make a Report / Report Issue</span>
-                    <!-- Note to self: create report_issue.php file ★ -->
-                    <a href="report_issue.php" class="small-btn">Open →</a>
-                </div>
-            </section>
     </main>
 </div>
 </body>
