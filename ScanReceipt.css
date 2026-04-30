@@ -145,6 +145,31 @@ body {
    font-size: 18px;
 }
 
+/* upload ★ */
+.upload-btn {
+    margin-top: 15px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #222;
+    color: white;
+    cursor: pointer;
+}
+
+.upload-btn:hover {
+    background-color: #444;
+}
+
+/* trying to hide the real input since i had 2 buttons ★ */
+#receiptUpload {
+    display: none;
+}
+
+.upload-message {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
 input[type="file"] {
     display: none;
 }
@@ -163,7 +188,7 @@ input[type="file"] {
     cursor: pointer;
 }
 
-.hr {
+hr {
     margin: 25px 0 18px;
     border: none;
     border-top: 1px solid #e0e0e0;
