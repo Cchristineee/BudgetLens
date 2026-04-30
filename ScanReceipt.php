@@ -1,5 +1,44 @@
 <?php
-session_start()
+session_start();
+
+/* to upload the receipts to backend ★ */ 
+$uploadMessage = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+
+    if (isset($_FILES["receipt"]) && $_FILES["receipt"]["error"] === 0) {
+
+        $uploadDir = "uploads/";
+
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0777, true);
+        }
+
+        $fileName = basename($_FILES["receipt"]["name"]);
+        $fileTmp = $_FILES["receipt"]["tmp_name"];
+        $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+        /* Allows only jpg, png, & pdfs to be uploaded ★ */ 
+        $allowedTypes = ["jpg", "jpeg", "png", "pdf"];
+
+        if (in_array($fileExt, $allowedTypes)) {
+
+            $newFileName = uniqid("receipt_", true) . "." . $fileExt;
+            $destination = $uploadDir . $newFileName;
+
+            if (move_uploaded_file($fileTmp, $destination)) {
+                $uploadMessage = "Receipt uploaded successfully!";
+            } else {
+                $uploadMessage = "File upload failed.";
+            }
+
+        } else {
+            $uploadMessage = "Only JPG, PNG, and PDF files are allowed.";
+        }
+
+    } else {
+        $uploadMessage = "Please choose a receipt file.";
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,11 +65,26 @@ session_start()
 
         <h2>Upload Receipt Image</h2>
         <p>Drag & Drop or click to browse · JPG, PNG, PDF</p>
-
+        
+       <!-- original ver. 
         <form action="#" method="POST" enctype="multipart/form-data">
             <label for="receiptUpload" class="file-btn">Choose File</label>
             <input type="file" id="receiptUpload" name="receipt" accept=".jpg,.jpeg,.png,.pdf">
         </form>
+        ★ -->
+
+        <form action="ScanReceipt.php" method="POST" enctype="multipart/form-data">
+            <label for="receiptUpload" class="file-btn">Choose File</label>
+
+            <input type="file" id="receiptUpload" name="receipt" 
+                accept=".jpg,.jpeg,.png,.pdf" required>
+
+            <button type="submit" class="upload-btn">Upload Receipt</button>
+        </form>
+
+        <?php if (!empty($uploadMessage)): ?>
+            <p class="upload-message"><?php echo $uploadMessage; ?></p>
+        <?php endif;?>
     </section>
 
     <hr> 
@@ -47,14 +101,14 @@ session_start()
         <!-- Hard coded values, will use db later -->
         <div class="results-card">
         <table>
-            <thread>
+            <thead>
                 <tr>
                     <th>ITEM NAME</th>
                     <th>PRICE</th>
                     <th>CATEGORY</th>
                     <th>MATCH</th>
-                </th>
-            </thread>
+                </tr>
+            </thead>
 
             <tbody>
                 <tr>
@@ -90,9 +144,6 @@ session_start()
         <div class="action-buttons">
             <button class="cancel-btn">Cancel</button>
             <button class="save-btn">Confirm & Save</button>
-        </div>
-
-        </div> 
         </div>
     </section>
     </main>
