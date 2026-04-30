@@ -7,7 +7,7 @@ $budgetResult = null;
 
 if ($uID) {
     // mathcing budget.categoryID with global_category.global_categoryID ❤
-    $sql = "SELECT global_category.name, budget.budgetLimit, budget.remaining_amount_left 
+    $sql = "SELECT global_category.global_categoryID, global_category.name, budget.budgetLimit, budget.remaining_amount_left 
             FROM budget 
             JOIN global_category ON budget.categoryID = global_category.global_categoryID
             WHERE budget.userID = ?";
@@ -74,6 +74,7 @@ $summarySpent = $row['totalSpent'] ?? 0;
         <select id="BudgetName" required style="width: 90%; padding: 8px; margin-bottom: 15px;">
     <option value="" disabled selected>Select a Budget Category</option>
 
+
     <?php 
     if ($availableCategories && $availableCategories->num_rows > 0) {
         while($cat = $availableCategories->fetch_assoc()) {
@@ -84,6 +85,13 @@ $summarySpent = $row['totalSpent'] ?? 0;
     ?>
 </select>
           <input type="number" id="SpendingLimit" step="0.01" placeholder="Price (default 0)" style="width: 90%; padding: 8px; margin-bottom: 15px;">
+
+          <label>Reset Period</label>
+        <select id="resetPeriod" style="width: 90%; padding: 8px; margin-bottom: 15px;">
+            <option value = 1 >Weekly</option>
+            <option value = 2 >Bi-Weekly</option>
+            <option value = 3 >2 Minutes </option>  <!-- Presentation purposes ★ -->
+        </select>
         
         <div style="display: flex; gap: 10px;">
             <button onclick="save()" style="flex: 1; padding: 8px; background: green; color: white; border: none; cursor: pointer;">Create</button>
@@ -122,7 +130,7 @@ if ($uID && $budgetResult && $budgetResult->num_rows > 0) {
             ?>
  
         <!-- Create Boxes for indivdual budgets ❤  -->
-        <a href="Edit_Budget.php" class="budget-card-link"> <!-- makes it clickable to edit budget ★ -->
+        <a href="Edit_Budget.php?id=<?php echo $row['global_categoryID'];?>" class="budget-card-link"> <!-- makes it clickable to edit budget ★ ❤-->
             <div class="budget-card">
                 <h3 class ="card-title"> <?php echo htmlspecialchars($row['name']); ?> </h3>
                 <p class="card-text">
@@ -159,8 +167,9 @@ if ($uID && $budgetResult && $budgetResult->num_rows > 0) {
     async function save() {
 
         const dropdown = document.getElementById("BudgetName");
-    const categoryID = dropdown.value; 
-    const limit = document.getElementById("SpendingLimit").value;
+        const categoryID = dropdown.value; 
+        const limit = document.getElementById("SpendingLimit").value;
+        const frequencyID = document.getElementById("resetPeriod").value;
 
         if (!categoryID) {
         alert("Please select a budget category");
@@ -178,7 +187,7 @@ if ($uID && $budgetResult && $budgetResult->num_rows > 0) {
                                         categoryID: categoryID,
                                         budgetLimit: parseFloat(limit),
                                         remainingAmount: parseFloat(limit), //will be the same as budgetLimit when first created 
-                                        frequencyID: 3 }) //Hardcoded for now
+                                        frequencyID: parseInt(frequencyID) })
             });
 
 

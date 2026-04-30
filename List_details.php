@@ -64,6 +64,8 @@ $listInfo = $stmt->get_result()->fetch_assoc();
     </div>
 </div>
 
+
+
     <!-- List Card ★ -->
     <section class="list-card">
     
@@ -99,7 +101,10 @@ $listInfo = $stmt->get_result()->fetch_assoc();
                  }
         ?>
 
+        
     </section>
+
+
 
     <!--Popup when you click list ❤ -->
     <div id="itemPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center;">

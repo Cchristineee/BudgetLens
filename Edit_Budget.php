@@ -1,5 +1,12 @@
 <?php
-session_start()
+session_start();
+include "connect.php";
+$global_categoryID = $_GET['id'] ?? 0;
+// used to get current category name ❤ 
+$stmt = $conn->prepare("SELECT name FROM Global_Category WHERE global_categoryID = ?");
+$stmt->bind_param("i", $global_categoryID);
+$stmt->execute();
+$categoryInfo = $stmt->get_result()->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -18,26 +25,24 @@ session_start()
     <?php include 'sidebar.php';?>
 
     <main class="main-content">
-    <p class="breadcrumb">My Budget &gt; <span>Food</span></p>
+    <p class="breadcrumb">My Budget &gt; <span><?php echo htmlspecialchars($categoryInfo['name'] ?? 'Unknown'); ?></span></p>
 
     <div class="edit-header">
         <a href="MyBudget.php" class="back-arrow">←</a>
-        <h1>Edit Budget: Food</h1>
+        <h1>Edit Budget:<?php echo htmlspecialchars($categoryInfo['name'] ?? 'Unknown'); ?> </h1>
     </div>
 
     <!-- These are hardcodded, will add from db later... ★ -->
     <div class="edit-card">
 
-        <label>Category Name</label>
-        <input type="text" placeholder="Food">
 
         <label>Budget Limit</label>
         <input type="text" placeholder="$300.00">
 
         <label>Reset Period</label>
         <select>
-            <option>Montly</option>
             <option>Weekly</option>
+            <option>Bi-Weekly</option>
             <option>2 Minutes </option>  <!-- Presentation purposes ★ -->
         </select>
 

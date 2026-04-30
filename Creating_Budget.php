@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set('America/New_York'); //needed so that time is in EST ❤
-error_reporting(0);
-ini_set('display_errors', 0);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 session_start();
 include "connect.php";
 header('Content-Type: application/json');
