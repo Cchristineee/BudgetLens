@@ -308,4 +308,111 @@ body {
 .create-budget-btn:hover {
     opacity: 0.9;
 }
+/* Modal */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.share-modal {
+    width: 600px;
+    background: white;
+    border-radius: 10px;
+    padding: 30px 42px;
+}
+
+.share-modal h2 {
+    font-family: Georgia, serif;
+    font-size: 30px;
+    margin-bottom: 28px;
+}
+
+.info-box {
+    background: #eef8ff;
+    border: 1.5px dashed #5d9bff;
+    border-radius: 7px;
+    color: #0f4c73;
+    padding: 28px;
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 34px;
+}
+
+.share-modal label {
+    display: block;
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.share-modal input {
+       width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    font-size: 16px;
+    margin-bottom: 22px;
+}
+
+.share-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.shared-user {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.shared-user span {
+    flex: 1;
+    background: #e5e5e5;
+    padding: 14px;
+    border-radius: 6px;
+}
+
+.remove-btn {
+    border: 1px solid red;
+    background: white;
+    color: red;
+    padding: 13px 22px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.cancel-btn,
+.save-btn {
+    flex: 1;
+    padding: 14px;
+    border-radius: 7px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background: white;
+    border: 1px solid #333;
+}
+
+.save-btn {
+    background: #6a9bae;
+    color: white;
+    border: none;
+}
 

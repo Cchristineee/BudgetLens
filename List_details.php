@@ -55,16 +55,16 @@ $listInfo = $stmt->get_result()->fetch_assoc();
         <h1><?php echo htmlspecialchars($listInfo['list_name'] ?? 'Unknown'); ?></h1>
         
    </div>
-
+    
+    <!-- Heading ★❤ -->
     <div class="header-actions">
         <span class="shared-badge">Shared</span>
-        <a href="#" class="action-btn secondary">Share</a>
+
+        <button type="button" class="action-btn" onclick="openShareModal()">Share</button>
         <a href="#" id ="addItem" class="action-btn primary">Add Item +</a>
         <a href="#" onclick="deleteList()"class="action-btn danger-outline">Delete List</a>
     </div>
 </div>
-
-
 
     <!-- List Card ★ -->
     <section class="list-card">
@@ -94,17 +94,13 @@ $listInfo = $stmt->get_result()->fetch_assoc();
                     
                         <div class="item-actions">
                         <a href="#" class="small-btn edit-btn">Edit</a>
-                        <button class ="small-btn delete-btn" onclick="deleteItem(<?php echo $row['itemID']; ?>)">Purchase </button>
+                        <button class ="small-btn delete-btn" onclick="deleteItem(<?php echo $row['itemID']; ?>)">Delete</button>
                         </div>
                         </div>
                 <?php
                  }
         ?>
-
-        
     </section>
-
-
 
     <!--Popup when you click list ❤ -->
     <div id="itemPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center;">
@@ -130,11 +126,46 @@ $listInfo = $stmt->get_result()->fetch_assoc();
         </div>
     </div>
 
+     <!-- Share Modal Dialog: Lets the user share budget list with another user by entering thier username★ -->
+    <div id="shareModal" class="modal-overlay">
+    <div class="share-modal">
+        <h2>Share "<?php echo htmlspecialchars($listInfo['list_name']); ?>"</h2>
+        <div class="info-box">
+            System will verify the username exists before sharing.
+        </div>
+
+        <form action="share_list.php" method="POST"> <!-- share_list.php file needs to be created ★ -->
+
+            <input type="hidden" name="list_id" value="<?php echo htmlspecialchars($listID); ?>">
+            <label>ENTER USERNAME TO SHARE WITH</label>
+
+            <input 
+                type="text" 
+                name="share_username" 
+                placeholder="Type a BudgetLens username..." 
+                required
+            >
+
+            <p class="shared-title">Currently shared with:</p>
+
+            <div class="shared-user">
+                <span>@John_doe</span>
+                <button type="button" class="remove-btn">Remove</button>
+            </div>
+
+            <div class="modal-actions">
+                <button type="button" class="cancel-btn" onclick="closeShareModal()">Cancel</button>
+                <button type="submit" class="save-btn">Share List</button>
+            </div>
+        </form>
+    </div>
+</div>
+
     <script>
         const itemPopup = document.getElementById('itemPopup');
         const listID = <?php echo json_encode($listID); ?>;
 
-        document.getElementById('addItem').onclick = () => itemPopup.style.display = 'flex';
+        document.getElementById('addItem').onclick = () => itemPopup.style.display = 'flex'; 
 
         //popup ❤
         function closeItemPopup() { 
@@ -240,7 +271,7 @@ $listInfo = $stmt->get_result()->fetch_assoc();
         alert("Could not connect to the server.");
     }
 }
-    </script>
+</script>
 <!-- toggle checkbox -->
 <script>
 function toggleComplete(checkbox) {
@@ -254,9 +285,19 @@ function toggleComplete(checkbox) {
 }
 </script>
 
+<script>
+    
+//Share Modal functionality ★
+function openShareModal() {
+        document.getElementByd("shareModal").classList.add("active");
+        }
+
+function closeShareModal() {
+        document.getElementByd("shareModal").classList.remove("active");
+        }
+</script>
 
     </main>
     </div>
-
     </body>
 </html>
