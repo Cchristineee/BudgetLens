@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-/* to upload the receipts to backend ★ */ 
+/* to upload the receipts to backend fgi★ */ 
 $uploadMessage = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -17,6 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $fileName = basename($_FILES["receipt"]["name"]);
         $fileTmp = $_FILES["receipt"]["tmp_name"];
         $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+       
         /* Allows only jpg, png, & pdfs to be uploaded ★ */ 
         $allowedTypes = ["jpg", "jpeg", "png", "pdf"];
 
