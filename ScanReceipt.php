@@ -47,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BudgetLens - Scan Receipt</title>
-    <link rel="stylesheet" href="ScanReceipt.css">
+    <link rel="stylesheet" href="ScanReceipt.css?v=1.1">
 </head>
 <body>
 
@@ -72,15 +72,29 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <input type="file" id="receiptUpload" name="receipt" accept=".jpg,.jpeg,.png,.pdf">
         </form>
         ★ -->
-
+<!-- commeted out cause was not working 
         <form action="ScanReceipt.php" method="POST" enctype="multipart/form-data">
-            <label for="receiptUpload" class="file-btn">Choose File</label>
+    <p>Please select your receipt:</p> -->
+    
+    <!-- The 'for' attribute MUST match the ID of the input below -->
+    <!--<label for="receiptUpload" class="file-btn">Choose Receipt Image</label>
+    
+    <input type="file" id="receiptUpload" name="receipt" 
+           accept=".jpg,.jpeg,.png,.pdf" required>
 
-            <input type="file" id="receiptUpload" name="receipt" 
-                accept=".jpg,.jpeg,.png,.pdf" required>
+    <br>
 
-            <button type="submit" class="upload-btn">Upload Receipt</button>
-        </form>
+    <button type="submit" class="save-btn">Upload and Scan</button>
+</form>
+-->
+
+<form method="POST" enctype="multipart/form-data">
+
+    <input type="file" name="receipt" required>
+    <button type="submit" class="save-btn">Upload and Scan</button>
+
+
+</form>
 
         <?php if (!empty($uploadMessage)): ?>
             <p class="upload-message"><?php echo $uploadMessage; ?></p>
@@ -92,6 +106,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
      <!-- OCR Section Preview ★ -->
     <section class = "ocr-section">
         <h2>OCR Results Preview</h2>
+
+        
 
         <div class="preview-message">
         <!-- After upload, OCR extracts items & prices. User confirms before saving -->
