@@ -121,7 +121,8 @@ if ($uID && $budgetResult && $budgetResult->num_rows > 0) {
 
         // for bar ❤ 
         $percent = ($limit > 0) ? ($spent / $limit) * 100 : 0;
-        $percent = min(100, max(0, $percent)); // 
+        $percent = min(100, max(0, $percent)); // \
+        
 
         // Status color class ❤ 
         $remaining = $row['remaining_amount_left'];
@@ -135,7 +136,8 @@ if ($uID && $budgetResult && $budgetResult->num_rows > 0) {
                 <h3 class ="card-title"> <?php echo htmlspecialchars($row['name']); ?> </h3>
                 <p class="card-text">
                 $<?php echo number_format($spent, 2); ?> 
-                of $<?php echo number_format($limit, 2); ?> spent
+                of $<?php echo number_format($limit, 2); ?> spent <br>
+                Remaining amount left: $<?php echo number_format($remaining, 2); ?>
                 </p>
                 <div class="progress-bar">
                     <div class="progress-fill <?php echo $statusClass; ?>"
