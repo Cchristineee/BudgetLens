@@ -11,6 +11,37 @@ if (!isset($_SESSION['user_id'])) {
 }
 $uID = $_SESSION['user_id']; 
 
+// Monthly overview totals ★
+// Since there wasn't a budget amount or amount spent created in db, I set 
+// budgetLimit as the total budget and the remaining amount left 
+// as the total remaining  ★
+$sqlOverview = "
+    SELECT 
+        SUM(budgetLimit) AS total_budget,
+        SUM(remaining_amount_left) AS total_remaining
+    FROM Budget
+    WHERE userID = ?
+";
+
+$stmtOverview = $conn->prepare($sqlOverview);
+
+if (!$stmtOverview) {
+    die("SQL Error: " . $conn->error);
+}
+
+$stmtOverview->bind_param("i", $uID);
+$stmtOverview->execute();
+
+$resultOverview = $stmtOverview->get_result();
+$overview = $resultOverview->fetch_assoc();
+
+$totalBudget = $overview['total_budget'] ?? 0;
+$totalRemaining = $overview['total_remaining'] ?? 0;
+$totalSpent = $totalBudget - $totalRemaining;
+
+$percentUsed = ($totalBudget > 0) ? ($totalSpent / $totalBudget) * 100 : 0;
+$progressWidth = min($percentUsed, 100);
+
 //used for Spending Staus image. if remaining_amount is negative we know they went overbudget in a category ❤
 $overBudget = false;
 
@@ -51,7 +82,7 @@ if ($row['total'] > 0) {
                 <p>Here's your budget overview for <?php echo $currentMonthYear; ?></p>
             </header>
 
-        <!-- Spending Status -->
+        <!-- Spending Status ★ -->
          <section class="top-cards">
             <div class="card status-card">
                 <h3>Spending Status</h3>
@@ -74,10 +105,35 @@ if ($row['total'] > 0) {
 
             </div>
 
-            <!-- Overview card -->
+            <!-- Overview card ★ -->
             <div class="card overview-card">
                 <h3>Monthly Overview</h3>
 
+                <p class="overview-label">Total spent this month</p>
+
+                <div class="overview-amount-line">
+                    <span class=overview-amount">
+                        $<?php echo number_format($totalSpent, 2); ?>
+                    </span>
+
+                    <span class=overview-budget-text">
+                        $<?php echo number_format($totalBudget, 2); ?> budget
+                    </span>
+                </div>
+
+            <!-- Progress Bar ★ -->
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: <?php echo $progressWidth; ?>%;">
+                </div>
+            </div>
+
+            <div class="progress-meta">
+                    <span><?php echo round($percentUsed); ?>% used</span>
+                    <span>$<?php echo number_format($totalRemaining, 2); ?> remaining</span>
+                </div>
+            </div>
+            
+            <!-- orig. hardcoded 
                 <p class="overview-label">Total spent this month</p>
 
                 <div class="overview-amount-line">
@@ -93,8 +149,9 @@ if ($row['total'] > 0) {
                     <span>$1,099.49 remaining</span>
                 </div>
             </div>
+                    -->
         
-             <!-- Ugent Items-->
+             <!-- Ugent Items ★ -->
             <div class="card urgent-card">
             <h3>Recently Added</h3>
 
