@@ -94,7 +94,7 @@ $listInfo = $stmt->get_result()->fetch_assoc();
                     
                         <div class="item-actions">
                         <a href="#" class="small-btn edit-btn">Edit</a>
-                        <button class ="small-btn delete-btn" onclick="deleteItem(<?php echo $row['itemID']; ?>)">Delete</button>
+                        <button class ="small-btn delete-btn" onclick="deleteItem(<?php echo $row['itemID']; ?>)">Purchase</button>
                         </div>
                         </div>
                 <?php
