@@ -32,7 +32,7 @@ session_start()
 
                 <div class="setting-row">
                     <div class="setting-label">Change Password</div>
-                    <a href="change_password.php" class="small-btn">Change →</a> <!-- Note to self: create change_password.php file ★ -->
+                    <a href="change_password.html" class="small-btn">Change →</a>
                 </div>
         </section>
 

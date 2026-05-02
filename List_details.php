@@ -94,7 +94,7 @@ $listInfo = $stmt->get_result()->fetch_assoc();
                     
                         <div class="item-actions">
                         <a href="#" class="small-btn edit-btn">Edit</a>
-                        <button class ="small-btn delete-btn" onclick="deleteItem(<?php echo $row['itemID']; ?>)">Delete</button>
+                        <button class ="small-btn purchase-btn" onclick="deleteItem(<?php echo $row['itemID']; ?>)">Purchase</button>
                         </div>
                         </div>
                 <?php
@@ -217,9 +217,9 @@ $listInfo = $stmt->get_result()->fetch_assoc();
             }
         }
 
-        //delete item ❤
+        //purchase item ❤
         async function deleteItem(id) {
-            if (!confirm("Are you sure you want to remove this item?")) return;
+            if (!confirm("Are you sure you want to purchase this item?")) return;
         
             try {
                 const response = await fetch('delete_item.php', {
