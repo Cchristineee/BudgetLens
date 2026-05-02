@@ -1,6 +1,9 @@
 <?php session_start();
 include "connect.php";
 
+// month/year updates automatically ★ 
+$currentMonthYear = date("F Y");
+
 // makes sure you are logged in ❤
 
 if (!isset($_SESSION['user_id'])) {
@@ -44,8 +47,8 @@ if ($row['total'] > 0) {
         <main class="main-content">
             <header class="dashboard">
                 <h2>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?>!</h2>
-                <!-- I want to see if we can use real date/time that would sync -->
-                <p>Here's your budget overview for April 2026</p>
+                <!-- month/year updates automatically ★ -->
+                <p>Here's your budget overview for <?php echo $currentMonthYear; ?></p>
             </header>
 
         <!-- Spending Status -->
