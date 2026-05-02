@@ -93,7 +93,7 @@ if ($row['total'] > 0) {
         
              <!-- Ugent Items-->
             <div class="card urgent-card">
-            <h3>Urgent Items</h3>
+            <h3>Recently Added</h3>
 
             <div class="item-row">
             <div class="item-info">
@@ -111,7 +111,7 @@ if ($row['total'] > 0) {
             <button class="item-btn">Add to cart</button>
             </div>
 
-            <a href="MyList.php" class="view-all-link">View all items →</a>
+            <a href="MyList.php" class="view-all-link">View Shopping Lists →</a>
             </div>       
      </section>
 </body>

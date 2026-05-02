@@ -20,7 +20,7 @@ $hashedPassword = password_hash($Password, PASSWORD_DEFAULT);
 $sql = "INSERT into user_data(username,password,roles)VALUES( '$Username','$hashedPassword', 'user')";
 
 if(mysqli_query($conn,$sql)){
-// this needs to go to go to dashboard when finished 
+
     header('location:home.php');
     exit();
 }
