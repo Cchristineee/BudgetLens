@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['items'])) {
             //Then the budget will be uupdated since you confirmed you bought these items ❤
             if ($catID) {
                 $updateBudget = $conn->prepare("
-                    UPDATE budget 
+                    UPDATE Budget 
                     SET remaining_amount_left = remaining_amount_left - ? 
                     WHERE userID = ? AND categoryID = ?
                 ");

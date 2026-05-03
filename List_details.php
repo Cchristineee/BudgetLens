@@ -3,7 +3,7 @@ session_start();
 include "connect.php";
 
 //gets categories for dropdown ❤
-$query = "SELECT global_categoryID, name FROM global_category ORDER BY name ASC";
+$query = "SELECT global_categoryID, name FROM Global_Category ORDER BY name ASC";
 $result = $conn->query($query);
 
 
@@ -88,7 +88,7 @@ $shareInfo = $stmt->get_result()->fetch_assoc();
     <?php
         //  Added itemID to the SELECT list ❤
         $itemStmt = $conn->prepare("SELECT item.itemID, item.item_name, item.item_price,Global_Category.name FROM item Left Join Global_Category 
-        ON item.categoryID = global_category.global_categoryID WHERE listID = ?");
+        ON item.categoryID = Global_Category.global_categoryID WHERE listID = ?");
         $itemStmt->bind_param("i", $listID);
         $itemStmt->execute();
         $items = $itemStmt->get_result();

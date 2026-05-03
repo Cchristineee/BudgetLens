@@ -30,7 +30,7 @@ $catID = $item['categoryID'];
 
 // UPDATE the budget (subtracting) ❤
 if ($catID) {
-    $updateBudget = $conn->prepare("UPDATE budget SET remaining_amount_left = remaining_amount_left - ? WHERE userID = ? AND categoryID = ?");
+    $updateBudget = $conn->prepare("UPDATE Budget SET remaining_amount_left = remaining_amount_left - ? WHERE userID = ? AND categoryID = ?");
     $updateBudget->bind_param("dii", $price, $uID, $catID);
     $updateBudget->execute();
 }

@@ -7,10 +7,10 @@ $budgetResult = null;
 
 if ($uID) {
     // mathcing budget.categoryID with global_category.global_categoryID ❤
-    $sql = "SELECT global_category.global_categoryID, global_category.name, budget.budgetLimit, budget.remaining_amount_left 
-            FROM budget 
-            JOIN global_category ON budget.categoryID = global_category.global_categoryID
-            WHERE budget.userID = ?";
+    $sql = "SELECT Global_Category.global_categoryID, Global_Category.name, Budget.budgetLimit, Budget.remaining_amount_left 
+            FROM Budget 
+            JOIN Global_Category ON Budget.categoryID = Global_Category.global_categoryID
+            WHERE Budget.userID = ?";
             
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $uID);
@@ -38,8 +38,8 @@ $summarySpent = $row['totalSpent'] ?? 0;
 
     // gets categories that users have not chosen yet to put into dropdown ❤
 
-    $catSql = "SELECT global_categoryID, name FROM global_category 
-               WHERE global_categoryID NOT IN (SELECT categoryID FROM budget WHERE userID = ?)";
+    $catSql = "SELECT global_categoryID, name FROM Global_Category 
+               WHERE global_categoryID NOT IN (SELECT categoryID FROM Budget WHERE userID = ?)";
     $catStmt = $conn->prepare($catSql);
     $catStmt->bind_param("i", $uID);
     $catStmt->execute();

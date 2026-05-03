@@ -45,7 +45,7 @@ $progressWidth = min($percentUsed, 100);
 //used for Spending Staus image. if remaining_amount is negative we know they went overbudget in a category ❤
 $overBudget = false;
 
-$sql = "SELECT COUNT(*) as total FROM budget WHERE userID = ? AND remaining_amount_left < 0";
+$sql = "SELECT COUNT(*) as total FROM Budget WHERE userID = ? AND remaining_amount_left < 0";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $uID);
 $stmt->execute();
@@ -56,6 +56,22 @@ $row = $result->fetch_assoc();
 if ($row['total'] > 0) {
     $overBudget = true; 
 }
+
+$userID = $_SESSION['userID'];
+
+$stmt = $conn->prepare("
+    SELECT i.item_name, i.item_price, l.list_name
+    FROM item i
+    JOIN Shopping_List l ON i.listID = l.listID
+    JOIN User_Shopping_List ul ON l.listID = ul.listID
+    WHERE ul.userID = ?
+    ORDER BY i.itemID DESC
+    LIMIT 5
+");
+
+$stmt->bind_param("i", $uID);
+$stmt->execute();
+$result = $stmt->get_result();
 ?>
 
 
@@ -151,25 +167,18 @@ if ($row['total'] > 0) {
             </div>
                     -->
         
-             <!-- Ugent Items ★ -->
+             <!-- Ugent Items ★ ❤ -->
             <div class="card urgent-card">
             <h3>Recently Added</h3>
 
-            <div class="item-row">
+            <?php while ($row = $result->fetch_assoc()): ?>
+        <div class="item-row">
             <div class="item-info">
-            <h4>Cheese</h4>
-            <p>Family shopping list</p>
+                <h4><?= htmlspecialchars($row['item_name']) ?></h4>
+                <p><?= htmlspecialchars($row['list_name']) ?></p>
             </div>
-            <button class="item-btn">Add to cart</button>
-            </div>
-
-            <div class="item-row">
-            <div class="item-info">
-            <h4>Multivitamins</h4>
-            <p>My Medicine</p>
-            </div>
-            <button class="item-btn">Add to cart</button>
-            </div>
+        </div>
+    <?php endwhile; ?>
 
             <a href="MyList.php" class="view-all-link">View Shopping Lists →</a>
             </div>       

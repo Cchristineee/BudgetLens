@@ -33,7 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             categoryID = ?, 
             remaining_amount_left = ?, 
             Budget_frequencyID = ?
-        WHERE BudgetID = ?
+        WHERE budgetID = ?
     ");
 
     $stmt->bind_param("didii", $budgetLimit, $categoryID,$remainingLeft, $Budget_frequencyID, $budgetID);
