@@ -131,7 +131,15 @@
             border-radius: 9px;
             color: #666;
         }
-        .forgot {
+
+        .forgot-row {
+            width: 100%;
+            text-align: right;
+            margin-top: 8px;
+            margin-bottom: 25px;
+        }
+        
+        .forgot-link{
             display: block;
             text-align: right;
             margin-top: -4px;
