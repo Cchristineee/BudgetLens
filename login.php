@@ -20,7 +20,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['userID'];
         $_SESSION['username'] = $user['username'];
+        $_SESSION['roles'] = $user['roles']; /* For the admin ★ */
+
+        /* redirect based on role  ★ */
+        if ($user['roles'] == 'admin') {
+        header('Location: admin_overview.php');
+        } else {
         header('location:Home.php');
+        }
         exit();
     } else {
         echo "Invalid username or password.";
