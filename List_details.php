@@ -19,6 +19,17 @@ $stmt->bind_param("i", $listID);
 $stmt->execute();
 // used to get current list name ❤
 $listInfo = $stmt->get_result()->fetch_assoc();
+
+// for icon pop on if your list is shared 
+$stmt = $conn->prepare("
+    SELECT is_shared
+    FROM User_Shopping_List
+    WHERE listID = ?
+");
+$stmt->bind_param("i", $listID);
+$stmt->execute();
+
+$shareInfo = $stmt->get_result()->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +69,10 @@ $listInfo = $stmt->get_result()->fetch_assoc();
     
     <!-- Heading ★❤ -->
     <div class="header-actions">
-        <span class="shared-badge">Shared</span>
+    <!-- icon showing if your list is shared-->
+    <?php if (($shareInfo['is_shared'] ?? 0) == 1): ?>
+    <span class="shared-badge">Shared</span>
+    <?php endif; ?>
 
         <button type="button" class="action-btn" onclick="openShareModal()">Share</button>
         <a href="#" id ="addItem" class="action-btn primary">Add Item +</a>
@@ -126,17 +140,22 @@ $listInfo = $stmt->get_result()->fetch_assoc();
         </div>
     </div>
 
-     <!-- Share Modal Dialog: Lets the user share budget list with another user by entering thier username★ -->
-    <div id="shareModal" class="modal-overlay">
+     <!--  Lets the user share budget list with another user by entering thier username★❤ -->
+     <div id="shareModal" class="modal-overlay">
     <div class="share-modal">
         <h2>Share "<?php echo htmlspecialchars($listInfo['list_name']); ?>"</h2>
+
         <div class="info-box">
             System will verify the username exists before sharing.
         </div>
 
-        <form action="share_list.php" method="POST"> <!-- share_list.php file needs to be created ★ -->
+        <form id="shareForm" onsubmit="handleShare(event)">
+            
+            
+            <div id="shareMessage" style="margin-bottom:10px;"></div>
 
             <input type="hidden" name="list_id" value="<?php echo htmlspecialchars($listID); ?>">
+
             <label>ENTER USERNAME TO SHARE WITH</label>
 
             <input 
@@ -289,12 +308,51 @@ function toggleComplete(checkbox) {
     
 //Share Modal functionality ★
 function openShareModal() {
-        document.getElementByd("shareModal").classList.add("active");
+        document.getElementById("shareModal").classList.add("active");
         }
 
 function closeShareModal() {
-        document.getElementByd("shareModal").classList.remove("active");
+        document.getElementById("shareModal").classList.remove("active");
         }
+</script>
+
+<script>
+    // So errors pop up in Shared list pop up window ❤
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const form = document.getElementById("shareForm");
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault(); //  Stops redirection issue ❤
+
+        const formData = new FormData(form);
+
+        fetch("share_list.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            const msgBox = document.getElementById("shareMessage");
+
+            msgBox.textContent = data.message;
+
+            if (data.status === "error") {
+                msgBox.style.color = "red";
+            } else {
+                msgBox.style.color = "green";
+                form.reset();
+            }
+        })
+        .catch(() => {
+            const msgBox = document.getElementById("shareMessage");
+            msgBox.textContent = "Something went wrong.";
+            msgBox.style.color = "red";
+        });
+    });
+
+});
 </script>
 
     </main>
