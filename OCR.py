@@ -165,7 +165,7 @@ def upload():
 
             cursor.execute(
                 """
-                INSERT INTO Receipt_Item
+                INSERT INTO Receipt_item
                 (receiptID, receipt_item_name, receipt_item_price, categoryID)
                 VALUES (%s, %s, %s, %s)
                 """,

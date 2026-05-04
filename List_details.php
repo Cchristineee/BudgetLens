@@ -107,7 +107,16 @@ $shareInfo = $stmt->get_result()->fetch_assoc();
                         </div>
                     
                         <div class="item-actions">
-                        <a href="#" class="small-btn edit-btn">Edit</a>
+                        <a href="#" 
+   class="small-btn edit-btn"
+   onclick="openEditPopup(
+        <?= $row['itemID'] ?>,
+        '<?= htmlspecialchars($row['item_name'], ENT_QUOTES) ?>',
+        <?= $row['item_price'] ?>,
+        <?= $row['categoryID'] ?>
+   )">
+   Edit
+</a>
                         <button class ="small-btn purchase-btn" onclick="deleteItem(<?php echo $row['itemID']; ?>)">Purchase</button>
                         </div>
                         </div>
@@ -116,29 +125,112 @@ $shareInfo = $stmt->get_result()->fetch_assoc();
         ?>
     </section>
 
-    <!--Popup when you click list ❤ -->
+    <!--Popup when you click add item ❤ -->
     <div id="itemPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center;">
-        <div style="background: white; padding: 40px; border-radius: 20px; width: 50%; min-height: 27%; display: flex; flex-direction: column; gap 105px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);font size:55px;">
-        <h3 style="text-align: center;">Add Item</h3>
+    
+    <div style="
+        background: white; 
+        padding: 35px 40px; 
+        border-radius: 20px; 
+        width: 420px; 
+        display: flex; 
+        flex-direction: column; 
+        gap: 18px; 
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    ">
+        
+        <h3 style="text-align: center; font-size: 22px; margin-bottom: 10px;">
+            Add Item
+        </h3>
+
+        <input type="text" id="itemName" placeholder="Item Name" required 
+            style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+
+        <input type="number" id="itemPrice" step="0.01" placeholder="Price (default 0)" 
+            style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+
+        <select id="itemCategory" name="categoryID" required 
+            style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
             
-            <input type="text" id="itemName" placeholder="Item Name" required style="width: 90%; padding: 8px; margin-bottom: 15px;">
-            <input type="number" id="itemPrice" step="0.01" placeholder="Price (default 0)" style="width: 90%; padding: 8px; margin-bottom: 15px;">
-            
-            <select id="itemCategory" name="categoryID" required style="width: 96%; padding: 8px; margin-bottom: 15px;">
-                <option value="">-- Select Category --</option>
-                <?php while($row = $result->fetch_assoc()): ?>
-                    <option value="<?php echo $row['global_categoryID']; ?>">
-                        <?php echo htmlspecialchars($row['name']); ?>
-                    </option>
-                <?php endwhile; ?>
-            </select>
-            
-            <div style="display: flex; gap: 10px; justify-content: center;">
-                <button onclick="saveItem()" style="flex: 1; padding: 8px; background: #6e9cb3; color: white; border: none; cursor: pointer;">Create</button>
-                <button onclick="closeItemPopup()" style="flex: 1; padding: 8px; background: grey; color: white; border: none; cursor: pointer;">Cancel</button>
-            </div>
+            <option value="">-- Select Category --</option>
+            <?php while($row = $result->fetch_assoc()): ?>
+                <option value="<?php echo $row['global_categoryID']; ?>">
+                    <?php echo htmlspecialchars($row['name']); ?>
+                </option>
+            <?php endwhile; ?>
+        </select>
+
+        <div style="display: flex; gap: 12px; margin-top: 10px;">
+            <button onclick="saveItem()" 
+                style="flex: 1; padding: 12px; background: #6e9cb3; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                Create
+            </button>
+
+            <button onclick="closeItemPopup()" 
+                style="flex: 1; padding: 12px; background: #777; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                Cancel
+            </button>
         </div>
+
     </div>
+</div>
+
+
+<!-- Pop up for edit button -->
+<div id="editItemPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center;">
+    
+    <div style="
+        background: white; 
+        padding: 35px 40px; 
+        border-radius: 20px; 
+        width: 420px; 
+        display: flex; 
+        flex-direction: column; 
+        gap: 18px; 
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    ">
+        
+        <h3 style="text-align: center; font-size: 22px; margin-bottom: 10px;">
+            Edit Item
+        </h3>
+
+        <!-- hidden ID for editing -->
+        <input type="hidden" id="editItemID">
+
+        <input type="text" id="editItemName" placeholder="Item Name" required 
+            style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+
+        <input type="number" id="editItemPrice" step="0.01" placeholder="Price" 
+            style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+
+        <select id="editItemCategory" name="categoryID" required 
+            style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+            
+            <option value="">-- Select Category --</option>
+            <?php 
+            // run the query again OR store results beforehand
+            $result2 = $conn->query("SELECT global_categoryID, name FROM global_category ORDER BY name ASC");
+            while($row = $result2->fetch_assoc()): ?>
+                <option value="<?php echo $row['global_categoryID']; ?>">
+                    <?php echo htmlspecialchars($row['name']); ?>
+                </option>
+            <?php endwhile; ?>
+        </select>
+
+        <div style="display: flex; gap: 12px; margin-top: 10px;">
+            <button onclick="updateItem()" 
+                style="flex: 1; padding: 12px; background: #6e9cb3; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                Update
+            </button>
+
+            <button onclick="closeEditPopup()" 
+                style="flex: 1; padding: 12px; background: #777; color: white; border: none; border-radius: 8px; cursor: pointer;">
+                Cancel
+            </button>
+        </div>
+
+    </div>
+</div>
 
      <!--  Lets the user share budget list with another user by entering thier username★❤ -->
      <div id="shareModal" class="modal-overlay">
@@ -353,7 +445,18 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 });
+// for edit pop up 
+function openEditPopup(id, name, price, categoryID) {
+    document.getElementById("editItemPopup").style.display = "flex";
+
+    document.getElementById("editItemID").value = id;
+    document.getElementById("editItemName").value = name;
+    document.getElementById("editItemPrice").value = price;
+    document.getElementById("editItemCategory").value = categoryID;
+}
 </script>
+
+
 
     </main>
     </div>

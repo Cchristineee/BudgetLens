@@ -22,7 +22,7 @@ if ($uID) {
    $summarySql = "SELECT 
    SUM(budgetLimit) AS totalLimit,
    SUM(budgetLimit - remaining_amount_left) AS totalSpent
-    FROM budget
+    FROM Budget
     WHERE userID = ?";
 
 $summaryStmt = $conn->prepare($summarySql);
