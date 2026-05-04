@@ -46,12 +46,13 @@ function isActive($pageName) {
             <span class="nav-icon"> 🏷️</span>
             <span>Categories</span>
         </a>
-
-        <a href="admin_logs.php" class="nav-item <?php echo isActive('admin_logs.php'); ?>">
+       <!-- (may axe due to time constraints)
+        <a href="admin_logs.php" class="nav-item <!<?php echo isActive('admin_logs.php'); ?>">
             <span class="nav-icon"> 📊</span>
             <span>Audit Logs</span>
         </a>
-
+        -->
+    
         <!-- Sign out leads back to landing page ★ -->
         <a href="logout.php" class="nav-item">
             <span class="nav-icon">🚶</span>
