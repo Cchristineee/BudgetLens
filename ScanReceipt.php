@@ -91,7 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['receipt'])) {
                 $receiptData = null;
             }
         }
-        curl_close($ch);
+        //curl_close($ch);
         $receiptItems = [];
 
 //get info from current receipt for population 

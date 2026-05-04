@@ -209,7 +209,7 @@ $shareInfo = $stmt->get_result()->fetch_assoc();
             <option value="">-- Select Category --</option>
             <?php 
             // run the query again OR store results beforehand
-            $result2 = $conn->query("SELECT global_categoryID, name FROM global_category ORDER BY name ASC");
+            $result2 = $conn->query("SELECT global_categoryID, name FROM Global_Category ORDER BY name ASC");
             while($row = $result2->fetch_assoc()): ?>
                 <option value="<?php echo $row['global_categoryID']; ?>">
                     <?php echo htmlspecialchars($row['name']); ?>

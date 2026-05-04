@@ -62,7 +62,7 @@ if ($uID) {
                 //So you can see all users list
                 while($row = $result->fetch_assoc()) {
                     
-                    echo "<a href='list_details.php?id=" . $row['listID'] . "' class='list-card'>";
+                    echo "<a href='List_details.php?id=" . $row['listID'] . "' class='list-card'>";
                     echo "<div class='list-left'>";
                     echo "<h2>" . htmlspecialchars($row['list_name']) . "</h2>";
                     echo "</div>";
