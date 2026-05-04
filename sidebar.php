@@ -45,7 +45,7 @@ function isActive($pageName) {
         </a>
         
         <!-- Sign out leads back to landing page ★ -->
-        <a href="logout.php" class="nav-item <?php echo isActive('Settings.php'); ?>">
+        <a href="logout.php" class="nav-item">
             <span class="nav-icon"> 🚶</span>
             <span>Sign Out</span>
         </a>
