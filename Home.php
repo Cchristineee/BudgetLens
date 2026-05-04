@@ -57,6 +57,8 @@ if ($row['total'] > 0) {
     $overBudget = true; 
 }
 
+// used for recent items 
+
 $userID = $_SESSION['userID'];
 
 $stmt = $conn->prepare("
@@ -167,7 +169,7 @@ $result = $stmt->get_result();
             </div>
                     -->
         
-             <!-- Ugent Items ★ ❤ -->
+             <!-- Recent Items ★ ❤ -->
             <div class="card urgent-card">
             <h3>Recently Added</h3>
 

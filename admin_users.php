@@ -31,7 +31,7 @@ session_start();
             <div class="users-table">
                 <div class="table-header">
                 <span>USERNAME</span>
-                <span>JOINED</span>
+                <span>ITEMS</span> 
                 <span>LIST</span>
                 <span>REPORTS</span>
                 <span>ACTIONS</span>

@@ -1,10 +1,17 @@
 <?php 
 session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 include "connect.php";
 
 //gets categories for dropdown ❤
+
 $query = "SELECT global_categoryID, name FROM Global_Category ORDER BY name ASC";
-$result = $conn->query($query);
+$catResult = $conn->query($query);
+$categories = [];
+while($row = $catResult->fetch_assoc()){
+    $categories[] = $row;
+}
 
 
 $listID = $_GET['id'] ?? null;
@@ -20,7 +27,7 @@ $stmt->execute();
 // used to get current list name ❤
 $listInfo = $stmt->get_result()->fetch_assoc();
 
-// for icon pop on if your list is shared 
+// for icon pop on if your list is shared ❤
 $stmt = $conn->prepare("
     SELECT is_shared
     FROM User_Shopping_List
@@ -30,6 +37,17 @@ $stmt->bind_param("i", $listID);
 $stmt->execute();
 
 $shareInfo = $stmt->get_result()->fetch_assoc();
+
+// Get users who have access to this list ❤
+$stmt = $conn->prepare("
+    SELECT u.userID, u.username
+    FROM User_Shopping_List usl
+    JOIN user_data u ON usl.userID = u.userID
+    WHERE usl.listID = ?
+");
+$stmt->bind_param("i", $listID);
+$stmt->execute();
+$sharedUsers = $stmt->get_result();
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +105,7 @@ $shareInfo = $stmt->get_result()->fetch_assoc();
 
     <?php
         //  Added itemID to the SELECT list ❤
-        $itemStmt = $conn->prepare("SELECT item.itemID, item.item_name, item.item_price,Global_Category.name FROM item Left Join Global_Category 
+        $itemStmt = $conn->prepare("SELECT item.itemID,item.categoryID, item.item_name, item.item_price,Global_Category.name FROM item Left Join Global_Category 
         ON item.categoryID = Global_Category.global_categoryID WHERE listID = ?");
         $itemStmt->bind_param("i", $listID);
         $itemStmt->execute();
@@ -96,7 +114,7 @@ $shareInfo = $stmt->get_result()->fetch_assoc();
         while ($row = $items->fetch_assoc()) {
             ?>
         
-        <!-- showing items in the list ❤ -->
+      <!-- showing items in the list ❤ -->
                      <div class="list-item">
                     <div class="item-left">
                     <input type="checkbox" onchange="toggleComplete(this)">
@@ -105,20 +123,20 @@ $shareInfo = $stmt->get_result()->fetch_assoc();
                         <p>Category: <?php echo htmlspecialchars($row['name']); ?> · Est. $<?php echo number_format($row['item_price'], 2); ?></p>
                         </div> 
                         </div>
-                    
-                        <div class="item-actions">
-                        <a href="#" 
-   class="small-btn edit-btn"
-   onclick="openEditPopup(
-        <?= $row['itemID'] ?>,
-        '<?= htmlspecialchars($row['item_name'], ENT_QUOTES) ?>',
-        <?= $row['item_price'] ?>,
-        <?= $row['categoryID'] ?>
-   )">
-   Edit
-</a>
-                        <button class ="small-btn purchase-btn" onclick="deleteItem(<?php echo $row['itemID']; ?>)">Purchase</button>
-                        </div>
+                    <!-- edit pop up ❤ -->
+                    <div class="item-actions">
+    <a href="#" 
+       class="small-btn edit-btn"
+       onclick="openEditPopup(
+           '<?= $row['itemID'] ?>',
+           '<?= addslashes(htmlspecialchars($row['item_name'], ENT_QUOTES)) ?>',
+           '<?= $row['item_price'] ?>',
+           '<?= $row['categoryID'] ?>'
+       ); return false;">
+       Edit
+    </a>
+    <button class="small-btn purchase-btn" onclick="deleteItem('<?= $row['itemID']; ?>')">Purchase</button>
+</div>
                         </div>
                 <?php
                  }
@@ -149,16 +167,12 @@ $shareInfo = $stmt->get_result()->fetch_assoc();
         <input type="number" id="itemPrice" step="0.01" placeholder="Price (default 0)" 
             style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
 
-        <select id="itemCategory" name="categoryID" required 
-            style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
-            
-            <option value="">-- Select Category --</option>
-            <?php while($row = $result->fetch_assoc()): ?>
-                <option value="<?php echo $row['global_categoryID']; ?>">
-                    <?php echo htmlspecialchars($row['name']); ?>
-                </option>
-            <?php endwhile; ?>
-        </select>
+            <select id="itemCategory" style="padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+                <option value="">-- Select Category --</option>
+                <?php foreach($categories as $cat): ?>
+                    <option value="<?= $cat['global_categoryID']; ?>"><?= htmlspecialchars($cat['name']); ?></option>
+                <?php endforeach; ?>
+            </select>
 
         <div style="display: flex; gap: 12px; margin-top: 10px;">
             <button onclick="saveItem()" 
@@ -203,19 +217,12 @@ $shareInfo = $stmt->get_result()->fetch_assoc();
         <input type="number" id="editItemPrice" step="0.01" placeholder="Price" 
             style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
 
-        <select id="editItemCategory" name="categoryID" required 
-            style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
-            
-            <option value="">-- Select Category --</option>
-            <?php 
-            // run the query again OR store results beforehand
-            $result2 = $conn->query("SELECT global_categoryID, name FROM Global_Category ORDER BY name ASC");
-            while($row = $result2->fetch_assoc()): ?>
-                <option value="<?php echo $row['global_categoryID']; ?>">
-                    <?php echo htmlspecialchars($row['name']); ?>
-                </option>
-            <?php endwhile; ?>
-        </select>
+            <select id="editItemCategory" style="padding: 12px; border-radius: 8px; border: 1px solid #ddd;">
+                <option value="">-- Select Category --</option>
+                <?php foreach($categories as $cat): ?>
+                    <option value="<?= $cat['global_categoryID']; ?>"><?= htmlspecialchars($cat['name']); ?></option>
+                <?php endforeach; ?>
+            </select>
 
         <div style="display: flex; gap: 12px; margin-top: 10px;">
             <button onclick="updateItem()" 
@@ -259,10 +266,15 @@ $shareInfo = $stmt->get_result()->fetch_assoc();
 
             <p class="shared-title">Currently shared with:</p>
 
-            <div class="shared-user">
-                <span>@John_doe</span>
-                <button type="button" class="remove-btn">Remove</button>
-            </div>
+            <?php if ($sharedUsers): ?>
+    <?php while ($user = $sharedUsers->fetch_assoc()): ?>
+        <div class="shared-user">
+            <span>@<?php echo htmlspecialchars($user['username']); ?></span>
+        </div>
+    <?php endwhile; ?>
+<?php else: ?>
+    <div class="shared-user">Error loading users</div>
+<?php endif; ?>
 
             <div class="modal-actions">
                 <button type="button" class="cancel-btn" onclick="closeShareModal()">Cancel</button>
@@ -278,11 +290,21 @@ $shareInfo = $stmt->get_result()->fetch_assoc();
 
         document.getElementById('addItem').onclick = () => itemPopup.style.display = 'flex'; 
 
-        //popup ❤
+        // cancel function (add item) ❤
         function closeItemPopup() { 
             itemPopup.style.display = 'none'; 
             document.getElementById('itemName').value = '';
             document.getElementById('itemPrice').value = '';
+        }
+        // cancel function (edit item) ❤
+        function closeEditPopup() {
+        const editPopup = document.getElementById('editItemPopup');
+        editPopup.style.display = 'none';
+
+         document.getElementById('editItemID').value = '';
+        document.getElementById('editItemName').value = '';
+        document.getElementById('editItemPrice').value = '';
+        document.getElementById('editItemCategory').value = '';
         }
 
         //saving item ❤
@@ -328,6 +350,7 @@ $shareInfo = $stmt->get_result()->fetch_assoc();
             }
         }
 
+
         //purchase item ❤
         async function deleteItem(id) {
             if (!confirm("Are you sure you want to purchase this item?")) return;
@@ -349,6 +372,8 @@ $shareInfo = $stmt->get_result()->fetch_assoc();
                 alert("Error connecting to server.");
             }
         }
+
+        
 
         //delete list ❤
         async function deleteList() {
@@ -383,7 +408,7 @@ $shareInfo = $stmt->get_result()->fetch_assoc();
     }
 }
 </script>
-<!-- toggle checkbox -->
+<!-- toggle checkbox ❤ -->
 <script>
 function toggleComplete(checkbox) {
     const listItem = checkbox.closest('.list-item');
@@ -392,6 +417,37 @@ function toggleComplete(checkbox) {
         listItem.classList.add('completed');
     } else {
         listItem.classList.remove('completed');
+    }
+}
+//update item ❤ 
+
+async function updateItem() {
+    const id = document.getElementById('editItemID').value;
+    const name = document.getElementById('editItemName').value;
+    const price = document.getElementById('editItemPrice').value;
+    const categoryID = document.getElementById('editItemCategory').value; // Matches the fix in step 1
+
+    
+    try {
+        const response = await fetch('Edit_item.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                itemID: id, 
+                item_name: name, 
+                item_price: price,
+                categoryID: categoryID
+            })
+        });
+
+        const result = await response.json();
+        if (result.status === "success") {
+            location.reload();
+        } else {
+            alert("Update failed: " + result.message);
+        }
+    } catch (error) {
+        alert("Error connecting to server.");
     }
 }
 </script>

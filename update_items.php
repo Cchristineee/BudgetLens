@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "connect.php";
-
+//THIS IS TO UPDATE ITEMS FOR RECEIPT
 $uID = $_SESSION['user_id'] ?? null;
 
 error_reporting(E_ALL);
