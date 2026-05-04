@@ -62,7 +62,7 @@ $shareInfo = $stmt->get_result()->fetch_assoc();
     <!-- Heading ★❤ -->
    <div class="list-header"> 
         <div class="list-title-section">
-        <a href="mylist.php" class="back-arrow">←</a>
+        <a href="Mylist.php" class="back-arrow">←</a>
         <h1><?php echo htmlspecialchars($listInfo['list_name'] ?? 'Unknown'); ?></h1>
         
    </div>
