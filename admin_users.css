@@ -1,0 +1,214 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: Georgia, serif;
+    background-color: #eee5d4;
+    color: #111;
+}
+
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 255px;
+    background-color: #6B5437;
+    padding: 24px 10px;
+    border-right: 1px solid #ddd;
+    min-height: 100vh;
+}
+
+.sidebar-header {
+    margin-bottom: 28px;
+    padding: 0 10px;
+}
+
+/* Budget logo color brown */
+.logo {
+    margin: 0;
+    font-family: Georgia, serif;
+    font-size: 36px;
+    font-weight: bold;
+    line-height: 1.1;
+    color: #A19A8C;
+}
+/* Lens logo color beige */
+.logo span {
+    color: #C9B896;
+}
+
+.username {
+    margin: 4px 0 0;
+    font-size: 14px;
+    color: #7a7a7a
+}
+
+/* Sidebar navigation styles */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 12px;
+    color: #222;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.nav-item:hover {
+    background-color: #C9B896;
+}
+
+/*Highlights active tab*/
+.nav-item.active {
+    background-color: #C9B896;
+    font-weight: 600;
+    color: #000;
+    padding-left: 8px;
+}
+
+.nav-icon {
+    width: 14px;
+    text-align: center;
+    font-size: 17px;
+}
+
+/* The meat and potatoes of the layout */
+.main-content {
+    flex: 1;
+    padding: 90px 38px 40px;
+} 
+
+.dashboard-header {
+    margin-bottom: 22px;
+}
+
+.dashboard-header h1{
+    margin: 0; 
+    font-family: Georgia, serif;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.dashboard-header p {
+    margin: 6px 0 0;
+    color: #7b7b7b;
+    font-size: 16px;
+}
+
+/* User card */
+.users-card {
+    background-color: #fff;
+    border: 1px solid #6b5437;
+    border-radius: 14px;
+    width: 100%;
+    max-width: 1120px;
+    min-height: 790px;
+    margin: 0 auto;
+    padding: 26px 32px;
+}
+
+/* Search / header  */
+.users-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.users-header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+.users-header input {
+    width: 390px;
+    height: 38px;
+    border: 1px solid #6b5437;
+    border-radius: 7px;
+    padding: 0 12px;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    background-color: #f4f4f4;
+}
+
+/* users table */
+.users-table {
+    margin-top: 120px;
+    padding: 0 16px;
+}
+
+/* table header, row */
+.table-header, 
+.table-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1.5fr 0.7fr 1.2fr 1fr;
+    align-items: center;
+}
+
+.table-header {
+    background-color: #c9b896;
+    border-radius: 12px;
+    padding: 12px 34px;
+    font-family: Georgia, sans-serif;
+    font-size: 22px;
+}
+
+.table-row {
+    padding: 28px 34px;
+    border-bottom: 1px solid #ddd;
+    font-size: 23px;
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+/* Status icon */
+.status {
+    display: inline-block;
+    min-width: 105px;
+    text-align: center;
+    border-radius: 999px;
+    padding: 6px 18px;
+}
+
+.status.active {
+    background-color: #c9f7df;
+    color: #139a5c;
+}
+
+.status.none {
+    background-color: #ddd;
+    color: #111;
+}
+
+/* Delete button */
+.delete-btn {
+    background-color: #fff;
+    color: red;
+    border: 1px solid red;
+    border-radius: 7px;
+    padding: 8px 28px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background-color: red;
+    color: #fff;
+}
