@@ -21,7 +21,7 @@ $sql = "INSERT into user_data(username,password,roles)VALUES( '$Username','$hash
 
 if(mysqli_query($conn,$sql)){
 
-    header('location:home.php');
+    header('location:Home.php');
     exit();
 }
     else{
