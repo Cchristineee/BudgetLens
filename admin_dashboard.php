@@ -1,5 +1,43 @@
 <?php session_start();
 include "connect.php";
+
+// Calculate amount of users ❤
+
+$query = "SELECT COUNT(*) AS total_users FROM user_data";
+$result = $conn->query($query);
+
+$totalUsers = 0;
+if ($result && $row = $result->fetch_assoc()) 
+{
+    $totalUsers = $row['total_users'];
+}
+
+// Calculate amount of lists ❤
+
+$query = "SELECT COUNT(*) AS total_list FROM User_Shopping_List ";
+$result = $conn->query($query);
+
+
+if ($result && $row = $result->fetch_assoc()) 
+{
+    $totalList = $row['total_list'];
+}
+
+//Calculate Active Reports  needs to be done ❤
+
+
+
+//Calculate categories 
+
+$query = "SELECT COUNT(*) AS total_categories FROM Global_Category ";
+$result = $conn->query($query);
+
+
+if ($result && $row = $result->fetch_assoc()) 
+{
+    $totalcategories= $row['total_categories'];
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -7,8 +45,8 @@ include "connect.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BudgetLens - Admin Dashboard </title>
-    <link rel="stylesheet" href="admin_dashboard.css">
+    <title>BudgetLens - Admin Overview </title>
+    <link rel="stylesheet" href="admin_overview.css">
 </head>
 <body>
     <div class="dashboard-layout">
@@ -19,18 +57,18 @@ include "connect.php";
     <!-- Main Content ★ -->
         <main class="main-content">
             <header class="dashboar-header">
-                <p>Admin Dashboard</p>
+                <p>Admin Overview</p>
             </header>
             <!-- Hardcoded: will reflect database later... ★ -->
             <section class="stats-grid">
 
                 <div class="stat-card">
-                    <h2>142</h2>
+                    <h2><?php echo $totalUsers; ?></h2>
                     <p>Total Users</p>
                 </div>
 
                 <div class="stat-card">
-                    <h2>89</h2>
+                    <h2><?php echo $totalList; ?></h2>
                     <p>Active List</p>
                 </div>
 
@@ -40,7 +78,7 @@ include "connect.php";
                 </div>
 
                 <div class="stat-card">
-                    <h2>12</h2>
+                    <h2><h2><?php echo $totalcategories; ?></h2></h2>
                     <p>Categories</p>
                 </div>
             </section>
