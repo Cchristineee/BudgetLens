@@ -42,7 +42,7 @@ session_start()
 
                 <div class="setting-row">
                     <div class="setting-label">Make a Report / Report Issue</div>
-                    <a href="report_issue.php" class="small-btn">Open →</a> <!-- Note to self: create report_issue.php file ★ -->
+                    <a href="report_issue.php" class="small-btn">Open →</a> 
                     </div>
                 </div>
         </section>
