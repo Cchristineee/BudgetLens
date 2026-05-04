@@ -399,7 +399,7 @@ $sharedUsers = $stmt->get_result();
             alert("List deleted successfully.");
 
             // Redirect back to the MyList Page ❤
-            window.location.href = 'myList.php'; 
+            window.location.href = 'MyList.php'; 
         } else {
             alert("Error: " + result.message);
         }
