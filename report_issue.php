@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "connect.php";
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +23,13 @@ session_start();
             <p>Let us know what's going wrong or how we can improve.</p>
         </div>
 
+        <!-- Success Message when report is sent ❤ -->
+        <?php if (isset($_GET['success'])): ?>
+    <p style="color: green; margin-bottom: 15px;">
+        Success! Your message has been sent to the admin.
+    </p>
+    <?php endif; ?>
+    
         <form action="submit_issue.php" method="POST" enctype="multipart/form-data"> <!-- have to make submit page ★ -->
 
         <label>Issue Type</label>
@@ -39,14 +47,17 @@ session_start();
         <label>Description</label>
         <textarea name="description" rows="5" required></textarea>
 
+        <!-- Feature currently not available will do if we have time
+
         <label>Upload Screenshot (optional)</label>
-        <input type="file" name="screenshot">
+        <input type="file" name="screenshot"> -->
         
         <button type="submit">Submit Report</button>
         
         </form>
     </main>
 </div>
+
 
 </body>
 </html>
