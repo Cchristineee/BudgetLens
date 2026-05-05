@@ -3,29 +3,35 @@ session_start();
 
 include "connect.php";
 
+/* The user should be able to have their username show up since they're 
+ already logged in ★ */ 
+
+if (!isset($_SESSION["username"])) {
+    header("Location: Login.html");
+    exit();
+}
+
+$username = $_SESSION["username"];
 $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-    $username = $_POST["username"] ?? "";
     $new_password = $_POST["new_password"] ?? "";
     $confirm_password = $_POST["confirm_password"] ?? "";
 
-    if (empty($username) || empty($new_password) || empty($confirm_password)) {
+    if(empty($new_password) || empty($confirm_password)) {
         $message = "Please fill in all fields.";
     } elseif ($new_password !== $confirm_password) {
         $message = "Passwords do not match.";
     } else {
-
         $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
-
+        
         $stmt = $conn->prepare("UPDATE user_data SET password = ? WHERE username = ?");
         $stmt->bind_param("ss", $hashed_password, $username);
 
-        if ($stmt->execute()) {
-            $message = "Password updated successfully!";
+    if ($stmt->execute()) {
+        $message = "Password updated successfully!";
         } else {
-            $message = "Something went wrong.";
+        $message = "Something went wrong.";
         }
 
         $stmt->close();
@@ -61,8 +67,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <form method="POST" action="change_password.php">
                 <label>USERNAME</label>
-                <input type="text" name="username" 
-                placeholder="Enter your username....">
+                <!-- So the page knows who is logged in★ -->
+                <input type="text" value="<?php echo htmlspecialchars($username); ?>" disabled>
 
                 <label for="new-password">NEW PASSWORD</label>
                 <input type="password" id="new-password" 
