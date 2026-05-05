@@ -52,7 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <header class="top-header">
         <div class="logo">Budget<span>Lens</span></div>
-        <a href="Login.html" class="signup-btn">Login</a>
+        <a href="Home.php" class="signup-btn">Back to Dashboard</a>
     </header>
 
     <main class="page-wrapper">
