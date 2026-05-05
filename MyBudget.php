@@ -5,6 +5,25 @@ include "connect.php";
 $uID = $_SESSION['user_id'] ?? null;
 $budgetResult = null;
 
+//refreshing budgets
+if ($uID) {
+    $stmt = $conn->prepare("
+        UPDATE Budget b
+        JOIN BudgetFrequencies f ON b.Budget_frequencyID = f.frequencyID
+        SET 
+            b.remaining_amount_left = b.budgetLimit,
+            b.last_reset_date = NOW()
+        WHERE 
+            b.userID = ?
+            AND (
+                b.last_reset_date IS NULL
+                OR TIMESTAMPDIFF(MINUTE, b.last_reset_date, NOW()) >= f.total_minutes
+            )
+    ");
+    $stmt->bind_param("i", $uID);
+    $stmt->execute();
+}
+
 if ($uID) {
     // mathcing budget.categoryID with global_category.global_categoryID ❤
     $sql = "SELECT Global_Category.global_categoryID, Global_Category.name, Budget.budgetLimit, Budget.remaining_amount_left 

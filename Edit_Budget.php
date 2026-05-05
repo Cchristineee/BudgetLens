@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "connect.php";
+$uID = $_SESSION['user_id'] ?? null;
 $global_categoryID = $_GET['id'] ?? 0;
 // used to get current category name ❤ 
 $stmt = $conn->prepare("SELECT name FROM Global_Category WHERE global_categoryID = ?");
@@ -35,6 +36,32 @@ $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 $oldBudgetLimit = $row['budgetLimit'] ?? null;
+
+//get transactions for "this month transaction in edit ❤
+
+$transactions = [];
+
+if ($uID && $global_categoryID) {
+    $stmt = $conn->prepare("
+        SELECT 
+            r.date,
+            ri.receipt_item_name,
+            ri.receipt_item_price
+        FROM Receipt r
+        JOIN Receipt_item ri ON r.receiptID = ri.receiptID
+        WHERE 
+            r.userID = ?
+            AND ri.categoryID = ?
+            AND MONTH(r.date) = MONTH(CURRENT_DATE())
+            AND YEAR(r.date) = YEAR(CURRENT_DATE())
+        ORDER BY r.date DESC
+        LIMIT 10
+    ");
+
+    $stmt->bind_param("ii", $uID, $global_categoryID);
+    $stmt->execute();
+    $transactions = $stmt->get_result();
+}
 ?>
 
 
@@ -82,23 +109,21 @@ $oldBudgetLimit = $row['budgetLimit'] ?? null;
         <input type="hidden" name="oldBudgetLimit" value="<?= $oldBudgetLimit ?>">
         <hr>
 
-        <h2>This Month's Transactions</h2>
+        <h2>Recent Transactions</h2>
 
+        <?php if ($transactions && $transactions->num_rows > 0): ?>
+    <?php while ($row = $transactions->fetch_assoc()): ?>
         <div class="transaction-row">
             <div>
-                <h4>Grocery run - Whole Foods</h4>
-                <p>Mar 15, 2026</p>
+                <h4><?= htmlspecialchars($row['receipt_item_name']) ?></h4>
+                <p><?= date("M d, Y", strtotime($row['date'])) ?></p>
             </div>
-            <strong>-$87.40</strong>
+            <strong>-$<?= number_format($row['receipt_item_price'], 2) ?></strong>
         </div>
-
-         <div class="transaction-row">
-            <div>
-                <h4>Trader Joe's</h4>
-                <p>Mar 10, 2026</p>
-            </div>
-            <strong>-$113.10</strong>
-        </div>
+    <?php endwhile; ?>
+<?php else: ?>
+    <p>No transactions for this month.</p>
+<?php endif; ?>
 
         <div class="button-row">
             <button type="button" class="delete-btn" onclick="deleteBudget(<?= $global_categoryID ?>)"> Delete Budget </button>

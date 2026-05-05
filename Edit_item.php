@@ -24,9 +24,8 @@ $stmt->bind_param(
     $input['categoryID'],
     $input['itemID']
 );
-
 if ($stmt->execute()) {
-    echo json_encode(['success' => true]);
+    echo json_encode(['status' => 'success']);
 } else {
-    echo json_encode(['success' => false, 'message' => $stmt->error]);
+    echo json_encode(['status' => 'error', 'message' => $stmt->error]);
 }

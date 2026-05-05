@@ -424,7 +424,7 @@ function toggleComplete(checkbox) {
 async function updateItem() {
     const id = document.getElementById('editItemID').value;
     const name = document.getElementById('editItemName').value;
-    const price = document.getElementById('editItemPrice').value;
+    const price = parseFloat(document.getElementById('editItemPrice').value) || 0;
     const categoryID = document.getElementById('editItemCategory').value; // Matches the fix in step 1
 
     
