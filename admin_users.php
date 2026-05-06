@@ -27,7 +27,7 @@ $users = $conn->query("SELECT userID, username FROM user_data ORDER BY username 
             
             <div class="users-header">
                 <h1>All Users</h1>
-                <input type="text" placeholder="Search username....">
+               <!-- <input type="text" placeholder="Search username...."> -->
             </div>
             
             <!-- Hardcoded will reflect db later.... ★ -->

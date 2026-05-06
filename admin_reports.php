@@ -28,7 +28,7 @@ session_start();
          <!-- Hardcoded ...... ★ -->    
          <aside class="reports-list-panel">
             <div class="filters">
-                <input type="text" placeholder="Search reports...."/> 
+               <!-- <input type="text" placeholder="Search reports...."/> -->
                 
                 <div class="filter-row">
                     <select>
