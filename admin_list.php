@@ -16,14 +16,14 @@ session_start();
     <!-- Admin Sidebar Nav ★ -->
     <?php include 'admin_sidebar.php'; ?>
 
-    <!-- Main content ★ -->
+    <!-- Main Content ★ -->
     <main class="main-content">
 
         <section class="users-card">
             
             <div class="users-header">
-                <h1>All List</h1>
-                <input type="text" placeholder="Search list....">
+                <h1>All Shoppping List</h1>
+                <input type="text" placeholder="Search username....">
             </div>
             
             <!-- Hardcoded will reflect db later.... ★ -->
@@ -63,5 +63,8 @@ session_start();
       </section>
     </main>
 </div>
+</body>
+</html>
+    
 </body>
 </html>
