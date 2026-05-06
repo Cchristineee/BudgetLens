@@ -19,7 +19,7 @@
                 <h2>Create an Account</h2>
                 <p>Join BudgetLens to start tracking your spending</p>
 
-                <form action = "/BudgetLens/signup.php" method  = "post">
+                <form action = "signup.php" method  = "post">
                     <div class="form-group">
                         <label for="username">USERNAME</label>
                         <input type="text" id="username" name="username" placeholder="Enter a unique username...." required/>
@@ -30,10 +30,10 @@
                     </div>
                     <div class="form-group">
                         <label for="confirm-password">CONFIRM PASSWORD</label>
-                        <input type="password" id="confirm-password" placeholder="Re-enter your password...." required/>
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Re-enter your password...." required/>
                     </div>
                     
-                    <input type = "submit" name = "register" value = "Create Account">
+                    <input type = "submit" class = "createaccount-btn" name = "register" value = "Create Account">
                 </form>
 
                 <div class="footer-text">

@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bind_param("didii", $budgetLimit, $categoryID,$remainingLeft, $Budget_frequencyID, $budgetID);
 
     if ($stmt->execute()) {
-        echo "Budget updated successfully";
+        //echo "Budget updated successfully";
         header('location:MyBudget.php');
         exit();
 

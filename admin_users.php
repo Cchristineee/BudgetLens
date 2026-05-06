@@ -39,7 +39,7 @@ session_start();
 
             <div class="table-row">
                 <span>Christine_G</span>
-                <span>January 5, 2025</span>
+                <span>20</span>
                 <span>4</span>
                 <span><span class="status active">Active</span></span>
                 <span><button class="delete-btn">Delete</button></span>
@@ -47,7 +47,7 @@ session_start();
 
             <div class="table-row">
                 <span>bobby_k</span>
-                <span>February 12, 2025</span>
+                <span>5</span>
                 <span>2</span>
                 <span><span class="status active">Active</span></span>
                 <span><button class="delete-btn">Delete</button></span>
@@ -55,7 +55,7 @@ session_start();
 
             <div class="table-row">
                 <span>ariana_B</span>
-                <span>March 3, 2026</span>
+                <span>6</span>
                 <span>6</span>
                 <span><span class="status none">None</span></span>
                 <span><button class="delete-btn">Delete</button></span>

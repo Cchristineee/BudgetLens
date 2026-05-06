@@ -80,7 +80,7 @@ $sharedUsers = $stmt->get_result();
     <!-- Heading ★❤ -->
    <div class="list-header"> 
         <div class="list-title-section">
-        <a href="Mylist.php" class="back-arrow">←</a>
+        <a href="MyList.php" class="back-arrow">←</a>
         <h1><?php echo htmlspecialchars($listInfo['list_name'] ?? 'Unknown'); ?></h1>
         
    </div>
@@ -248,7 +248,7 @@ $sharedUsers = $stmt->get_result();
             System will verify the username exists before sharing.
         </div>
 
-        <form id="shareForm" onsubmit="handleShare(event)">
+        <form id="shareForm">
             
             
             <div id="shareMessage" style="margin-bottom:10px;"></div>
@@ -482,22 +482,23 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(res => res.json())
         .then(data => {
-            const msgBox = document.getElementById("shareMessage");
+    const msgBox = document.getElementById("shareMessage");
 
-            msgBox.textContent = data.message;
+    msgBox.textContent = data.message;
 
-            if (data.status === "error") {
-                msgBox.style.color = "red";
-            } else {
-                msgBox.style.color = "green";
-                form.reset();
-            }
-        })
-        .catch(() => {
-            const msgBox = document.getElementById("shareMessage");
-            msgBox.textContent = "Something went wrong.";
-            msgBox.style.color = "red";
-        });
+    if (data.status === "error") {
+        msgBox.style.color = "red";
+    } else {
+        msgBox.style.color = "green";
+        form.reset();
+        window.location.reload();
+    }
+})
+    .catch(() => {
+    const msgBox = document.getElementById("shareMessage");
+    msgBox.textContent = "Something went wrong.";
+    msgBox.style.color = "red";
+});
     });
 
 });

@@ -44,7 +44,7 @@ def get_category_map():
     db = get_db()
     cursor = db.cursor(dictionary=True)
 
-    cursor.execute("SELECT global_categoryID, name FROM global_category")
+    cursor.execute("SELECT global_categoryID, name FROM Global_Category")
     rows = cursor.fetchall()
     cursor.close()
     db.close()

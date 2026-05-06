@@ -7,6 +7,7 @@ header('Content-Type: application/json');
 $listID = $_POST['list_id'] ?? null;
 $username = $_POST['share_username'] ?? null;
 
+
 if (!$listID || !$username) {
     echo json_encode(["status" => "error", "message" => "Missing fields"]);
     exit;

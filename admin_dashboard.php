@@ -25,9 +25,18 @@ if ($result && $row = $result->fetch_assoc())
 
 //Calculate Active Reports  needs to be done ❤
 
+// attribute is_completed, 0 means not complete, 1 means completed 
 
+$query = "SELECT COUNT(*) AS active_reports 
+        FROM admin_issue_report 
+        WHERE is_completed = 0";
 
-//Calculate categories 
+$result = $conn->query($query);
+$row = $result->fetch_assoc();
+
+$activeCount = $row['active_reports'];
+
+//Calculate categories ❤
 
 $query = "SELECT COUNT(*) AS total_categories FROM Global_Category ";
 $result = $conn->query($query);
@@ -73,7 +82,7 @@ if ($result && $row = $result->fetch_assoc())
                 </div>
 
                 <div class="stat-card">
-                    <h2 class="red-number">3</h2>
+                    <h2 class="red-number"> <?php echo $activeCount; ?></h2>
                     <p>Open Reports</p>
                 </div>
 
