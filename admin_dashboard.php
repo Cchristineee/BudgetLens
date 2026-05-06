@@ -94,7 +94,7 @@ if ($result && $row = $result->fetch_assoc())
 
             <!-- Activity Card ★ -->
             <section class="activity-card">
-                <h2>Recent Activity</h2>
+                <h2>Recent Report Activity</h2>
                 
                 <div class="activity-row">
                     <span class="activity-date">2026 - 03 - 23 8:55</span>
