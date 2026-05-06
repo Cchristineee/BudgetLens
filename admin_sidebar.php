@@ -31,11 +31,13 @@ function isActive($pageName) {
             <span class="nav-icon"> 👥</span>
             <span>Users</span>
         </a>
-
+        
+        <!-- (may axe due to time constraints)
         <a href="admin_list.php" class="nav-item <?php echo isActive('admin_lists.php'); ?>">
             <span class="nav-icon"> 📋</span>
             <span>List</span>
         </a>
+        -->
 
         <a href="admin_reports.php" class="nav-item <?php echo isActive('admin_reports.php'); ?>">
             <span class="nav-icon"> 🚨</span>
