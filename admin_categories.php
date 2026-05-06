@@ -72,10 +72,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST["categoryName"])) {
     </section>
 
     <!-- Admin could view all categories ★ -->
-    <!-- Hardcoded......★ -->
-    <section class="card">
-        <h2>All Categories</h2>
-
         <section class="card">
          <h2>All Categories</h2>
     <!-- Category population ❤ -->
