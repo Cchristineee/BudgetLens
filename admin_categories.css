@@ -9,7 +9,7 @@ html, body {
 
 body {
     font-family: Georgia, serif;
-    background-color: #eee5d4;
+    background-color: #e9e4dc;
     color: #111;
 }
 
@@ -109,4 +109,78 @@ body {
     margin: 6px 0 0;
     color: #7b7b7b;
     font-size: 16px;
+}
+
+/* Admin Categories ★*/
+.admin-categories {
+    flex: 1;
+    max-width: 760px;
+    padding: 32px 40px;
+}
+
+.admin-categories h1 {
+    font-family: Georgia, serif;
+    font-size: 42px;
+    margin: 0 0 35;
+}
+
+.card {
+    background-color: #fff;
+    border: 3px solid #c9c4bb;
+    border-radius: 24px;
+    padding: 56px;
+    margin-bottom: 50px;
+}
+
+.card h2 {
+    font-size: 28px;
+    margin-bottom: 32px;
+}
+
+.category-form {
+    display: flex;
+    gap: 20px;
+}
+
+.category-form input {
+    flex: 1;
+    padding: 22px 26px;
+    font-size: 22px;
+    border: 3px solid #c9c4bb;
+    border-radius: 16px;
+    outline: none;
+}
+
+.category-form input::placeholder {
+    color: #888;
+}
+
+.category-form button {
+    padding: 0 36px;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    border-radius: 16px;
+    background-color: #d1d5dd;
+    color: #6b7280;
+    cursor: pointer;
+}
+
+.category-form button span {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.category-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.category-item {
+    background-color: #f8f9fb;
+    border: 3px solid #e1e3e8;
+    border-radius: 14px;
+    padding: 22px 30px;
+    font-size: 22px;
 }
