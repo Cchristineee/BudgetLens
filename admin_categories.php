@@ -6,19 +6,21 @@ include "connect.php";
 $query = "SELECT global_categoryID, name FROM Global_Category ORDER BY name ASC";
 $result = $conn->query($query);
 
-// Handle form submission
+// Handle form submission ❤
 if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST["categoryName"])) {
     $categoryName = trim($_POST["categoryName"]);
 
-    // Prevent duplicates (optional but recommended)
+    // Prevent duplicates ❤
     $check = $conn->prepare("SELECT global_categoryID FROM Global_Category WHERE name = ?");
     $check->bind_param("s", $categoryName);
     $check->execute();
     $check->store_result();
 
+    // category cant be the same ❤
     if ($check->num_rows > 0) {
         echo "<p style='color:red;'>Category already exists.</p>";
     } else {
+        // if not insertt to table ❤
         $stmt = $conn->prepare("INSERT INTO Global_Category (name) VALUES (?)");
         $stmt->bind_param("s", $categoryName);
 
@@ -52,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST["categoryName"])) {
     <main class="admin-categories">
         <h1>All Categories</h1>
     
-    <!-- Admin could add a new category to existing shopping list ★ -->
+    <!-- Admin could add a new category to existing shopping list ★❤ -->
     <section class="card">
         <h2>Add New Category</h2>
 
