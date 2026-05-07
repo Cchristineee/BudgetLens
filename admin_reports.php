@@ -47,6 +47,25 @@ if (!$selectedReport && count($reports) > 0) {
     $selectedReport = $reports[0];
 }
 
+/*  Count active reports is_complete = 0 ❤ */
+$activeQuery = "
+SELECT COUNT(*) AS total_active
+FROM admin_issue_report
+WHERE is_completed = 0
+";
+
+$activeResult = $conn->query($activeQuery);
+$activeReports = $activeResult->fetch_assoc()['total_active'];
+
+/* ❤ COUNT TOTAL REPORTS ❤ */
+$totalQuery = "
+SELECT COUNT(*) AS total_reports
+FROM user_issue_report
+";
+
+$totalResult = $conn->query($totalQuery);
+$totalReports = $totalResult->fetch_assoc()['total_reports'];
+
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +86,8 @@ if (!$selectedReport && count($reports) > 0) {
     <main class="reports-page">
         <header class = "reports-title">
             <h1>User Reports</h1>
-            <p>1 new report • 6 total</p>
+            <!-- Shows the amount of active reports that need to be read and how many reports in total -->
+            <p><?php echo $activeReports; ?> new report(s) • <?php echo $totalReports; ?> total</p>
         </header>
 
         <section class="reports-layout">
@@ -96,7 +116,8 @@ if (!$selectedReport && count($reports) > 0) {
 
     <?php foreach ($reports as $report): ?>
         <a href="?id=<?php echo $report['reportID']; ?>" style="text-decoration:none; color:inherit;">
-            <div class="report-card <?php echo ($report['is_completed'] == 0) ? 'active' : ''; ?>">
+            <!-- Selected report will have blue background, unselected will be white -->
+        <div class="report-card <?php echo ($selectedReport && $report['reportID'] == $selectedReport['reportID']) ? 'active' : ''; ?>">
                 
                 <div>
                     <!-- Figure out which issue_type the report is to give correct color scheme ❤ -->
@@ -173,10 +194,22 @@ if (!$selectedReport && count($reports) > 0) {
             </span>
 
         </div>
+            <!-- When clicked Active will be switched to Read ❤ -->
+            <?php if ($selectedReport['is_completed'] == 0): ?>
 
-        <button class="archive-btn">
-            <?php echo ($selectedReport['is_completed'] == 0) ? 'Set as Read' : 'Mark Active'; ?>
-        </button>
+            <form method="POST" action="Mark_Report_Read.php">
+
+             <input type="hidden" 
+           name="report_id" 
+           value="<?php echo $selectedReport['reportID']; ?>">
+
+             <button type="submit" class="archive-btn">
+             Set as Read
+            </button>
+
+</form>
+
+<?php endif; ?>
     </div>
      <!-- Subject ❤-->  
     <h2><?php echo htmlspecialchars($selectedReport['subject']); ?></h2>
@@ -184,7 +217,7 @@ if (!$selectedReport && count($reports) > 0) {
     <p class="date">Report #<?php echo $selectedReport['reportID']; ?></p>
      <!--   User Info ❤-->  
     <div class="user-card">
-        <h3>Username: <?php echo htmlspecialchars($selectedReport['username']); ?></h3> 
+        <h3>Report sent by: <?php echo htmlspecialchars($selectedReport['username']); ?></h3> 
         <h3>User ID: <?php echo $selectedReport['userID']; ?></h3>
     </div>
     <!-- Message content ❤-->  
