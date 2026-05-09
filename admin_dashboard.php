@@ -65,9 +65,9 @@ if ($result && $row = $result->fetch_assoc())
 
     <!-- Main Content ★ -->
         <main class="main-content">
-            <header class="dashboar-header">
+            <h1 class="admin-title">
                 <p>Admin Overview</p>
-            </header>
+            </h1>
             <!-- Hardcoded: will reflect database later... ★ -->
             <section class="stats-grid">
 
