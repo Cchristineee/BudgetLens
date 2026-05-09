@@ -182,7 +182,7 @@ fix it so it wouldn't scroll indefinetely */
 }
 
 .filters {
-  /* This keeps the scrollbar in postion and not have the All Status / Categories from 
+  /* This keeps keeps the scrollbar in postion and not have the All Status / Categories from 
   scrolling as well */
   position: sticky;
   top: 0;
