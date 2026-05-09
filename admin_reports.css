@@ -182,8 +182,15 @@ fix it so it wouldn't scroll indefinetely */
 }
 
 .filters {
-  padding: 24px;
-  border-bottom: 1px solid #6b5437;
+  /* This keeps the scrollbar in postion and not have the All Status / Categories from 
+  scrolling as well */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  background-color: #f8f8f8;
+  padding: 32px 24px;
+  border-bottom: 1px solid #8a6b47;
 }
 
 .filters input,
@@ -266,8 +273,6 @@ fix it so it wouldn't scroll indefinetely */
   background: #f1f5f9; 
   color: #475569;      
 }
-
-
 
 .new {
   background: #2563eb;
