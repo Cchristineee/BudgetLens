@@ -178,7 +178,7 @@ while ($row = $result->fetch_assoc()) {
         <div class = "upload-icon">📸</div>
 
         <h2>Upload Receipt Image</h2>
-        <p>Drag & Drop or click to browse · JPG, PNG, PDF</p>
+        <p>Drag & Drop or click to browse · JPG, JPEG, PNG)</p>
         
        <!-- original ver. but did not work to upload image 
 
