@@ -453,7 +453,7 @@ $sharedUsers = $stmt->get_result();
     }
 }
 
-    /*  //delete list ❤. -- Original 
+    /*  //delete list ❤
         async function deleteList() {
 
     // CONFIRMATIONS DONT DELETE PLZZZZ WE CANT RECOVER IT 
