@@ -8,7 +8,7 @@ include "connect.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BUdgetLens - Report an Issue</title>
+    <title>BudgetLens - Report an Issue</title>
     <link rel="stylesheet" href="report_issue.css">
 </head>
 <body>
