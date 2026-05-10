@@ -39,7 +39,7 @@ def get_db():
         port=3307
     )
 
-
+#get all category
 def get_category_map():
     db = get_db()
     cursor = db.cursor(dictionary=True)
