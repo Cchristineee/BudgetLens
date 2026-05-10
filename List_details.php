@@ -189,6 +189,61 @@ $sharedUsers = $stmt->get_result();
     </div>
 </div>
 
+<!--Popup when you want to delete the whole list ❤ -->
+<div id="deleteListModal" 
+    style="
+    display: none; 
+    position: fixed; 
+    top: 0; left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background: rgba(0,0,0,0.5); 
+    justify-content: center; 
+    align-items: center;">
+
+    <div style="
+    background: white; 
+        padding: 35px 40px; 
+        border-radius: 20px; 
+        width: 420px; 
+        display: flex; 
+        flex-direction: column; 
+        gap: 18px; 
+        box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+
+    <h3 style="
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 5px;">Delete List</h3>
+    <p style="
+    text-align: center;
+    color: #666;
+    margin: 0;">Are you sure you want to delete this list? This cannot be undone.</p>
+
+    <div style="display: flex; gap: 12px; margin-top: 10px;">
+        <button onclick="confirmDeleteList()"
+            style="
+            flex: 1; 
+            padding: 12px; 
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;">Delete</button>
+
+        <button onclick="document.getElementById('deleteListModal').style.display='none'"
+            style="
+            flex: 1; 
+            padding: 12px; 
+            background: #777;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;">Cancel</button>
+        </div>
+    </div>
+ </div>
+
 
 <!-- Pop up for edit button -->
 <div id="editItemPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center;">
@@ -373,9 +428,32 @@ $sharedUsers = $stmt->get_result();
             }
         }
 
-        
+        // Delete List 
+        async function deleteList() {
+        document.getElementById('deleteListModal').style.display = 'flex';
+    }
 
-        //delete list ❤
+        async function confirmDeleteList() {
+            try {
+            const response = await fetch('delete_list.php', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({list_id: listID})
+        });
+
+        const result = await response.json();
+        if (result.status === "success") {
+            // Redirect back to the MyList Page ❤
+            window.location.href = 'MyList.php';
+        } else {
+            alert("Error: " + result.message);
+        }
+    } catch (error) {
+        alert("Could not connect to the server.");
+    }
+}
+
+    /*  //delete list ❤. -- Original 
         async function deleteList() {
 
     // CONFIRMATIONS DONT DELETE PLZZZZ WE CANT RECOVER IT 
@@ -406,7 +484,8 @@ $sharedUsers = $stmt->get_result();
     } catch (error) {
         alert("Could not connect to the server.");
     }
-}
+} 
+ */
 </script>
 <!-- toggle checkbox ❤ -->
 <script>
