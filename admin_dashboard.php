@@ -46,6 +46,21 @@ if ($result && $row = $result->fetch_assoc())
 {
     $totalcategories= $row['total_categories'];
 }
+// Joining user_data,user_issue_report, admin_issue_report to find 5 most recent  reports 
+
+$sql = "
+    SELECT 
+        u.username,
+        a.is_completed,
+        a.admin_reportID
+    FROM admin_issue_report a
+    JOIN user_issue_report ur ON a.reportID = ur.reportID
+    JOIN user_data u ON ur.userID = u.userID
+    ORDER BY a.admin_reportID DESC
+    LIMIT 5
+";
+
+$result = $conn->query($sql);
 
 ?>
 
@@ -68,7 +83,6 @@ if ($result && $row = $result->fetch_assoc())
             <h1 class="admin-title">
                 <p>Admin Overview</p>
             </h1>
-            <!-- Hardcoded: will reflect database later... ★ -->
             <section class="stats-grid">
 
                 <div class="stat-card">
@@ -96,15 +110,34 @@ if ($result && $row = $result->fetch_assoc())
             <section class="activity-card">
                 <h2>Recent Report Activity</h2>
                 
-                <div class="activity-row">
-                    <span class="activity-date">2026 - 03 - 23 8:55</span>
-                    <span class="activity-text">user @bobby_k created a list "Vegan ingredients"</span>
-                </div>
+                <?php if ($result && $result->num_rows > 0): ?>
+        <!-- This will get the top 5 most recent reports and say if it is read or actice ❤ -->
+        <?php while ($row = $result->fetch_assoc()): ?>
 
-                <div class="activity-row">
-                    <span class="activity-date">2026 - 03 - 23 7:35</span>
-                    <span class="activity-text">Report submitted by @ariana</span>
-                </div>
+            <?php
+                $status = ($row['is_completed'] == 0) ? "Active" : "Read";
+                $statusClass = ($row['is_completed'] == 0) ? "active" : "read";
+            ?>
+
+            <div class="activity-row">
+                <span class="activity-date <?php echo $statusClass; ?>">
+                    <?php echo $status; ?>
+                </span>
+
+                <span class="activity-text">
+                    Report submitted by @<?php echo htmlspecialchars($row['username']); ?>
+                </span>
+            </div>
+
+        <?php endwhile; ?>
+
+    <?php else: ?>
+        <div class="activity-row">
+            <span class="activity-date">--</span>
+            <span class="activity-text">No reports found</span>
+        </div>
+    <?php endif; ?>
+
             </section>
         </main>
     </body>

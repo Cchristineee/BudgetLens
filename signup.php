@@ -7,15 +7,18 @@ include "connect.php";
 
 
 if (empty($_POST["username"])) {
-    die("Username is required");
+    header("Location: signup.html?username_error=Username+is+required");
+    exit();
 }
 
 if (empty($_POST["password"])) {
-    die("Password is required");
+    header("Location: signup.html?password_error=Password+is+required");
+    exit();
 }
 
 if (empty($_POST["confirm-password"])) {
-    die("Please confirm your password");
+    header("Location: signup.html?confirm_error=Please+confirm+your+password");
+    exit();
 }
 
 $Username = trim($_POST['username']);
@@ -24,7 +27,8 @@ $confirmPassword = $_POST['confirm-password'];
 
 //  Check if passwords match ❤
 if ($Password !== $confirmPassword) {
-    die("Passwords do not match");
+    header("Location: signup.html?error=Passwords+do+not+match");
+    exit();
 }
 
 // Hash password ❤
@@ -36,8 +40,10 @@ $checkStmt->bind_param("s", $Username);
 $checkStmt->execute();
 $checkStmt->store_result();
 
+//checks if username is taken ❤
 if ($checkStmt->num_rows > 0) {
-    die("Username already taken");
+    header("Location: signup.html?error=Username+already+taken");
+    exit();
 }
 
 // Insert user to database ❤
