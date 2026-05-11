@@ -1,31 +1,72 @@
 # BudgetLens
-BudgetLens is a web-based financial management application designed to help individuals and families track spending, manage shopping lists, and gain better visibility into their financial habits; all in one place.
 
 <p align="center">
   <img width="436" height="428" alt="Budget Logo" src="https://github.com/user-attachments/assets/bcc43b68-a30d-477a-ba22-867d83e36891" />
 </p>
 
+
 # Overview
 
-Many people struggle to manage their daily expenses because they rely on multiple disconnected tools such as note-taking apps, spreadsheets, or paper receipts. This fragmented approach makes it difficult to understand spending patterns and often leads to incomplete or inaccurate tracking. BudgetLens solves this problem by integrating receipt tracking, budgeting, and shopping list management into a single platform. By automating data entry and providing real-time insights, BudgetLens helps users make smarter financial decisions and avoid overspending.
+BudgetLens is a full-stack budgeting and expense tracking web application designed to help users manage spending, organize shopping lists, and track financial habits in one centralized platform.
 
-# Key Features
-- Receipt Scanning (OCR)
-- Upload or scan receipts
-- Automatically extract product names and prices using Optical Character Recognition (OCR)
-- Budget Tracking
-- Set spending limits by category
-- Monitor expenses in real time
-- Receive alerts when approaching or exceeding budgets
-- Smart Shopping Lists
-- Create categorized shopping lists
-- Assign budgets to each list
-- Track purchases directly from receipts
-- Share shopping lists with others
-- Enable group-based expense tracking (e.g., roommates, families)
-- Spending Insights
+The platform combines budgeting tools, receipt scanning/OCR functionality, and collaborative shopping list management to improve financial visibility and simplify expense tracking.
 
-# Analyze spending patterns by:
-- Time period (daily, weekly, monthly)
-- Payment method
-- Category
+## Tech Stack
+
+### Frontend
+- HTML5
+- CSS3
+- JavaScript
+
+### Backend
+- PHP
+
+### Database
+- MySQL
+
+### APIs & Tools
+- Tesseract OCR
+- Google Gemini API
+- Git/GitHub
+- XAMPP
+
+## How BudgetLens Works
+
+1. Users create budgets and spending categories
+2. Expense data is stored in MySQL tables
+3. Receipts are uploaded and processed using OCR
+4. Extracted transaction data is parsed and categorized
+5. The dashboard displays spending summaries and budget progress
+
+## Features
+- User authentication and session management
+- Budget creation and spending limit tracking
+- Expense categorization
+- OCR-based receipt scanning
+- Shopping list management
+- Nested list organization
+- Dashboard analytics and financial summaries
+- Responsive UI layouts
+
+## Challenges & Lessons Learned
+
+One of the biggest challenges during development was integrating OCR functionality for receipt scanning. Handling inconsistent text extraction and formatting required multiple debugging iterations and preprocessing adjustments.
+
+This project also strengthened my understanding of:
+- backend/frontend integration
+- relational database structure
+- debugging workflows
+- Git collaboration and merge conflict resolution
+- organizing scalable project structures
+
+## Future Improvements
+
+- React frontend migration
+- Data visualization dashboards
+- AI-powered spending insights
+- Shared collaborative budgeting
+- Mobile responsiveness improvements
+- Cloud deployment
+
+## Screenshots / GIFs 
+(Coming soon!)
